@@ -18,55 +18,39 @@ def get_media_upload_path(instance, filename):
     )
 
 
-class AbstractPost(models.Model):
+class Post(models.Model):
 
     slug = models.SlugField(default="", editable=False, max_length=60)
     title = models.CharField(max_length=60)
-    author = CurrentUserField()
+    content = HTMLField()
+    author = CurrentUserField(editable=False)
     category = models.ManyToManyField('Category')
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        return super(AbstractPost, self).save(*args, **kwargs)
+    def __str__(self):
+        return self.title
 
-    @property
-    @abstractmethod
     def snippet(self):
-        pass
+        return self.title
 
-    @property
-    @abstractmethod
+    def convert_content_to_image(self):
+        return self.content
+
     def graphic(self):
-        pass
+        return self.convert_content_to_image()
 
     def get_absolute_url(self):
         kwargs = {
             'pk': self.id,
             'slug': self.slug,
         }
-        return reverse(f'{self.__class__.__name__.lower()}-pk-slug-detail', kwargs=kwargs)
+        return reverse(f'post-pk-slug-detail', kwargs=kwargs)
 
-    class Meta:
-        abstract = True
-
-    def __str__(self):
-        return self.title
-
-
-class Article(AbstractPost):
-    content = HTMLField()
-
-    def convert_content_to_image(self):
-        return self.content
-
-    def snippet(self):
-        return self.title
-
-    def graphic(self):
-        return self.convert_content_to_image()
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super(Post, self).save(*args, **kwargs)
 
 
 class Category(models.Model):
@@ -81,3 +65,6 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = 'Categories'

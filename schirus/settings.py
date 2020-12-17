@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
 
+    'dal',
+    'dal_select2',
     'tinymce',
 
     'users',

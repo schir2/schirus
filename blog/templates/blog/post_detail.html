@@ -1,0 +1,6 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <a href="{% url 'blog:post-detail' pk=post.pk slug=post.slug %}">{{ post.title }}</a>
+    {{ post.content | safe }}
+    {{ post.author }}
+{% endblock %}

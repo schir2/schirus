@@ -10,6 +10,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('login/', TemplateView.as_view(template_name='users/login.html')),
     path('tinymce/', include('tinymce.urls')),
+    path('blog/', include(('blog.urls','blog'), namespace='blog'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
