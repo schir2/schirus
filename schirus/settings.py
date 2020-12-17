@@ -1,16 +1,22 @@
 import os
 from pathlib import Path
-from . import env
+import environ
+
+env = environ.Env(
+    DEBUG=(bool, True),
+    ALLOWED_HOSTS=(list, []),
+)
+environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = env.SECRET_KEY
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.DEBUG
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = env.ALLOWED_HOSTS
+ALLOWED_HOSTS = []
 
 
 # Application definition
