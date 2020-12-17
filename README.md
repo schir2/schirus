@@ -8,10 +8,12 @@
 
 ## Migrations
 Run the following manage shell commands in order 
-- `python manage.py shell` (To activate shell)
-- `makemigrations`
-- `sqlmigrate users 0001`
-- `migrate`
-- `makemigrations blog`
-- `sqlmigrate blog 0001`
-- `migrate`
+`python manage.py shell` (To activate shell)
+```
+makemigrations
+sqlmigrate users 0001
+migrate
+makemigrations blog
+sqlmigrate blog 0001
+migrate
+```
