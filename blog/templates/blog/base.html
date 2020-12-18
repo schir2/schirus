@@ -1,17 +1,49 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="us">
     <head>
+
+        <!-- meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+
         <title>{{ title }}</title>
+
+        <!-- css -->
+        <link rel="stylesheet" href="{% static 'blog/css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
+        <link rel="stylesheet" href="{% static 'blog/css/grid.css' %}">
+        <link rel="stylesheet" href="{% static 'blog/css/components.css' %}">
+        <link rel="stylesheet" href="{% static 'blog/css/typography.css' %}">
+        <link rel="stylesheet" href="{% static 'blog/css/navbar.css' %}">
+
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+        <!-- seo -->
+
     </head>
     <body>
-        {% block header %}
-        {% endblock %}
+        <header>
+            <nav class="navbar navbar-top">
+                <a class="navbar-link" href="#">Home</a>
+                <a class="navbar-link" href="{% url 'blog:post-list' %}">Blog</a>
+            </nav>
+            {% block header %}
+            {% endblock %}
+        </header>
 
-        {% block content %}
-        {% endblock %}
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
 
-        {% block footer %}
-        {% endblock %}
+        <footer>
+            {% block footer %}
+            {% endblock %}
+        </footer>
 
         {% block javascript %}
         {% endblock %}
