@@ -29,12 +29,6 @@ jobs:
         python manage.py makemigrations blog
         python manage.py sqlmigrate blog 0001
         python manage.py migrate
-        
-    - name: Make envfile
-    - uses: actions/dotenv-action
-      with:
-        envkey_SECRET_KEY: 12345
-        directory: /schirus/
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
