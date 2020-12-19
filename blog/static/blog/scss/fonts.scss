@@ -1,0 +1,9 @@
+@import 'colors';
+
+$primary-font :'Nunito', sans-serif;
+$secondary-font :'Nunito', sans-serif;
+
+.subtle-emphasis{
+    text-emphasis: $dark-200;
+    font-style: italic;
+}

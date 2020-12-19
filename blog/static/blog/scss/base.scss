@@ -1,0 +1,18 @@
+@import 'colors';
+@import 'fonts';
+@import 'components';
+@import 'lengths';
+
+*{
+  font-family: $primary-font;
+  color: $dark-100;
+}
+
+a{
+    text-decoration: none;
+}
+
+.content{
+    max-width: $xl;
+    margin: 0 auto;
+}

@@ -1,0 +1,33 @@
+@import 'colors';
+@import 'components/card';
+
+.badge {
+  display:inline-block;
+  background-color:$light-200;
+  box-shadow: 2px 2px 2px $light-400;
+  padding: .1em .3em .1em .3em;
+}
+
+.navbar {
+    display:flex;
+    justify-content: center;
+}
+
+.navbar-top {
+    padding-top:.25em;
+    padding-bottom: .25em;
+}
+
+.navbar-link {
+  font-size: 2em;
+  text-decoration: none;
+  margin: .1em;
+  padding: .1em;
+  color: $dark-100;
+
+  :hover {
+    transition: color 1s;
+    color: $dark-300;
+
+  }
+}
