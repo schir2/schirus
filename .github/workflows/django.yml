@@ -31,7 +31,7 @@ jobs:
         python manage.py migrate
         
     - name: Make envfile
-    - uses: actions/checkout@v2
+    - uses: actions/dotenv-action
       with:
         envkey_SECRET_KEY: 12345
         directory: /schirus/
