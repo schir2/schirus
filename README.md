@@ -17,3 +17,43 @@ makemigrations blog
 sqlmigrate blog 0001
 migrate
 ```
+
+## Features
+- [ ] Blog
+    - [ ] Models
+        - [ ] Posts
+            - [ ] Snippet Generator Method
+            - [ ] Graphic Generator Method
+    - [ ] Views
+        - [x] CategoryAutoCompleteView
+        - [x] PostListView
+        - [x] PostDetailView
+        - [x] PostCreateView
+        - [x] PostDeleteView
+        - [x] PostUpdateView
+        - [ ] PostSearchView
+    - [ ] Templates
+        - [ ] Base
+        - [ ] List
+        - [ ] Detail
+        - [ ] Delete Popover
+        - [ ] Create
+        - [ ] Update
+        - [ ] Search
+    - [ ] Components
+        - [ ] Like Button
+    - [ ] Stylesheets
+        - [x] Setup scc
+        - [x] Convert css to scss
+        - [ ] Figure out scss structure
+        - [ ] colors.scss
+            - [ ] select color palette
+        - [ ] components.scss
+            - [ ] .grid
+            - [ ] .card
+            - [ ] .button
+            - [ ] .badge
+        - [ ] fonts.scss
+            - [x] primary font
+            - [ ] secondary font
+        - [x] lengths.scss
