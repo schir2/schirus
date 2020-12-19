@@ -13,7 +13,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.6, 3.7, 3.8]
+        python-version: [3.8]
 
     steps:
     - uses: actions/checkout@v2
@@ -25,6 +25,14 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name: Setup
+      run:
+        python -m makemigrations
+        python -m sqlmigrate users 0001
+        python -m migrate
+        python -m makemigrations blog
+        python -m sqlmigrate blog 0001
+        python -m migrate
     - name: Run Tests
       run: |
         python manage.py test
