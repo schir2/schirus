@@ -3,6 +3,7 @@ from abc import ABCMeta, abstractmethod
 from django_currentuser.db.models import CurrentUserField
 from os import path
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from tinymce.models import HTMLField
 from django.utils.text import slugify
 from django.urls import reverse
@@ -23,22 +24,26 @@ class Post(models.Model):
     slug = models.SlugField(default="", editable=False, max_length=60)
     title = models.CharField(max_length=60)
     content = HTMLField()
-    author = CurrentUserField(editable=False)
+    snippet = models.CharField(max_length=255)
+    author = CurrentUserField(editable=False, related_name='author')
     category = models.ManyToManyField('Category')
+    likes = models.ManyToManyField(get_user_model(), related_name='like')
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
 
-    def snippet(self):
-        return self.title
-
     def convert_content_to_image(self):
         return self.content
 
+    @property
     def graphic(self):
         return self.convert_content_to_image()
+
+    @property
+    def likes_count(self):
+        return self.likes.count()
 
     def get_absolute_url(self):
         kwargs = {

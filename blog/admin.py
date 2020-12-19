@@ -8,8 +8,9 @@ class PostAdmin(admin.ModelAdmin):
     form = PostForm
     list_display = (
         'title',
-        'snippet',
         'graphic',
+        'snippet',
+        'likes_count',
     )
 
 
