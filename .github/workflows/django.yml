@@ -27,12 +27,12 @@ jobs:
         pip install -r requirements.txt
     - name: Setup
       run:
-        python -m makemigrations
-        python -m sqlmigrate users 0001
-        python -m migrate
-        python -m makemigrations blog
-        python -m sqlmigrate blog 0001
-        python -m migrate
+        python manage.py makemigrations
+        python manage.py sqlmigrate users 0001
+        python manage.py migrate
+        python manage.py makemigrations blog
+        python manage.py sqlmigrate blog 0001
+        python manage.py migrate
     - name: Run Tests
       run: |
         python manage.py test
