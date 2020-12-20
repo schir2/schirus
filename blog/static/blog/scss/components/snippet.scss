@@ -1,0 +1,37 @@
+@import '../colors';
+@import '../effects';
+@import '../fonts';
+
+.snippet {
+  padding: .5em;
+  margin: .5em;
+  box-shadow: $shadow-m;
+
+  .snippet-header {
+    .snippet-title {
+      font-size: $text-300;
+    }
+
+    .snippet-tags {
+      margin: .25em;
+    }
+  }
+
+  .snippet-content {
+    padding: .25em;
+
+  }
+
+  .snippet-footer {
+    display:flex;
+    padding: .25em;
+    justify-content: space-between;
+    .snippet-author {
+      text-emphasis: $dark-200;
+      font-style: italic;
+    }
+    i{
+      vertical-align: middle;
+    }
+  }
+}

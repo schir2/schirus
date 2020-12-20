@@ -1,0 +1,9 @@
+@import '../colors';
+@import '../effects';
+
+.badge {
+  display:inline-block;
+  background-color:$light-200;
+  box-shadow: $shadow-s;
+  padding: .1em .3em .1em .3em;
+}

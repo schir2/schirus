@@ -1,19 +1,27 @@
 {% extends 'blog/base.html' %}
 {% block content %}
+    <nav class="search">
+        <form>
+            <input placeholder="Filter">
+        </form>
+    </nav>
     <div class="grid-container">
         {% for post in posts %}
-            <div class="grid-item card">
-                <div class="card-header">
-                    <a href="{% url 'blog:post-detail' pk=post.pk slug=post.slug %}"><h2>{{ post.title }}</h2></a>
-                    <div>
-                        {% for category in post.category.all %}
+            <div class="grid-item snippet">
+                <div class="snippet-header">
+                    <a class="snippet-title" href="{% url 'blog:post-detail' pk=post.pk slug=post.slug %}">{{ post.title }}</a>
+                    <div class="snippet-tags">
+                        {% for category in post.category.all|slice:":3" %}
                             <div class="badge">{{ category }}</div>
                         {% endfor %}
                     </div>
                 </div>
-                <div class="card-body">{{ post.snippet }}</div>
-                <div class="card-footer">
-                    <span class="subtle-emphasis">{{ post.author }}</span>
+                <div class="snippet-content">{{ post.snippet }}</div>
+                <div class="snippet-footer">
+                    <span class="snippet-author">{{ post.author }}</span>
+                    <span class="snippet-likes">
+                        {{ post.likes_count }}
+                        <i aria-selected="true" class="material-icons">favorite_border</i></span>
                 </div>
             </div>
         {% empty %}

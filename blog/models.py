@@ -42,8 +42,12 @@ class Post(models.Model):
         return self.convert_content_to_image()
 
     @property
-    def likes_count(self):
+    def likes_count(self) -> int:
         return self.likes.count()
+
+    @property
+    def like_by_user(self) -> bool:
+        pass
 
     def get_absolute_url(self):
         kwargs = {
