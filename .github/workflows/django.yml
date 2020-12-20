@@ -23,14 +23,6 @@ jobs:
         pip install -r requirements.txt
       env:
         SECRET_KEY: 1234
-    - name: Setup
-      run:
-        python manage.py makemigrations
-        python manage.py sqlmigrate users 0001
-        python manage.py migrate
-        python manage.py makemigrations blog
-        python manage.py sqlmigrate blog 0001
-        python manage.py migrate
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
