@@ -45,7 +45,7 @@ migrate
     - [ ] Components
         - [ ] Like Button
     - [ ] Stylesheets
-        - [x] Setup scc
+        - [x] Setup scss
         - [x] Convert css to scss
         - [ ] Figure out scss structure
         - [ ] colors.scss
@@ -61,3 +61,5 @@ migrate
         - [x] lengths.scss
     - [ ] Javascript
         - [ ] Like Ajax Method
+    - [ ] Scripts
+        - [ ] Migrations
