@@ -24,6 +24,8 @@ migrate
         - [ ] Posts
             - [ ] Snippet Generator Method
             - [ ] Graphic Generator Method
+            - [ ] Liked by current user Method
+            - [ ] Like method
     - [ ] Views
         - [x] CategoryAutoCompleteView
         - [x] PostListView
@@ -50,10 +52,12 @@ migrate
             - [ ] select color palette
         - [ ] components.scss
             - [ ] .grid
-            - [ ] .card
+            - [ ] .snippet
             - [ ] .button
             - [ ] .badge
         - [ ] fonts.scss
             - [x] primary font
             - [ ] secondary font
         - [x] lengths.scss
+    - [ ] Javascript
+        - [ ] Like Ajax Method
