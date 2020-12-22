@@ -24,37 +24,39 @@ class Post(models.Model):
     slug = models.SlugField(default="", editable=False, max_length=60)
     title = models.CharField(max_length=60)
     content = HTMLField()
-    snippet = models.CharField(max_length=255)
+    subtitle = models.CharField(max_length=255)
     author = CurrentUserField(editable=False, related_name='author')
-    category = models.ManyToManyField('Category')
-    likes = models.ManyToManyField(get_user_model(), related_name='like')
+    category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True)
+    likes = models.ManyToManyField(get_user_model(), related_name='likes', blank=True, editable=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ('title', 'author',)
 
     def __str__(self):
         return self.title
 
     def convert_content_to_image(self):
+        # TODO Implement this method
         return self.content
 
     @property
     def graphic(self):
+        # TODO Implement this method
         return self.convert_content_to_image()
+
+    @property
+    def snippet(self):
+        return self.subtitle
 
     @property
     def likes_count(self) -> int:
         return self.likes.count()
 
     @property
-    def like_by_user(self) -> bool:
-        pass
-
-    def get_absolute_url(self):
-        kwargs = {
-            'pk': self.id,
-            'slug': self.slug,
-        }
-        return reverse(f'post-pk-slug-detail', kwargs=kwargs)
+    def liked_by(self) -> set:
+        return set(like['username'] for like in self.likes.all().values())
 
     def save(self, *args, **kwargs):
         if not self.slug:

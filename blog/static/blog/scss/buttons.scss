@@ -1,0 +1,12 @@
+@import 'colors';
+@import 'lengths';
+@import 'fonts';
+@import 'effects';
+
+#add-button{
+
+  i {
+    font-size:$font-size-500;
+    color:$green-100;
+  }
+}

@@ -21,6 +21,8 @@ migrate
 ## Features
 - [ ] Blog
     - [ ] Models
+        - [ ] Categories
+        - [ ] Comments
         - [ ] Posts
             - [ ] Snippet Generator Method
             - [ ] Graphic Generator Method

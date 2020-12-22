@@ -1,4 +1,7 @@
-from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
+from django.views import View
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView, TemplateView
+from django.urls import reverse
+from django.http import HttpResponse, JsonResponse
 
 from dal import autocomplete
 
@@ -32,13 +35,36 @@ class PostCreateView(CreateView):
     template_name_suffix = '_form'
     form_class = PostForm
 
+    def get_success_url(self, *args, **kwargs):
+        return reverse('blog:post-list', args=args, kwargs=kwargs)
+
 
 class PostUpdateView(UpdateView):
     model = Post
     template_name_suffix = '_form'
     form_class = PostForm
 
+    def get_success_url(self, *args, **kwargs):
+        return reverse('blog:post-list', args=args, kwargs=kwargs)
+
 
 class PostDeleteView(DeleteView):
     model = Post
     template_name_suffix = '_delete'
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse('blog:post-list', args=args, kwargs=kwargs)
+
+
+def like_post_view(request):
+    # TODO Finish Ajax JS Method
+    if request.method == 'POST':
+        user = request.user
+        post_id = request.POST.get('post_id')
+        post = Post.objects.get(pk=post_id)
+        if user.username in post.liked_by:
+            post.likes.remove(user)
+            return JsonResponse({'like': False})
+        else:
+            post.likes.add(user)
+            return JsonResponse({'like': True})

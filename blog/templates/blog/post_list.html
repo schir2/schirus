@@ -5,18 +5,16 @@
             <input placeholder="Filter">
         </form>
     </nav>
+    <a id="add-button" href="{% url 'blog:post-create' %}"><i class="material-icons">add_circle</i></a>
     <div class="grid-container">
         {% for post in posts %}
             <div class="grid-item snippet">
                 <div class="snippet-header">
                     <a class="snippet-title" href="{% url 'blog:post-detail' pk=post.pk slug=post.slug %}">{{ post.title }}</a>
-                    <div class="snippet-tags">
-                        {% for category in post.category.all|slice:":3" %}
-                            <div class="badge">{{ category }}</div>
-                        {% endfor %}
-                    </div>
                 </div>
-                <div class="snippet-content">{{ post.snippet }}</div>
+                <div class="snippet-content">
+                    <span class="badge">{{ post.category }}</span>
+                </div>
                 <div class="snippet-footer">
                     <span class="snippet-author">{{ post.author }}</span>
                     <span class="snippet-likes">

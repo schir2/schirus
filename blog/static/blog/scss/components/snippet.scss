@@ -3,13 +3,17 @@
 @import '../fonts';
 
 .snippet {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: .5em;
   margin: .5em;
-  box-shadow: $shadow-m;
+  box-shadow: $box-shadow-m;
+  border-radius: .5em 0 .5em 0;
 
   .snippet-header {
     .snippet-title {
-      font-size: $text-300;
+      font-size: $font-size-300;
     }
 
     .snippet-tags {
@@ -29,9 +33,6 @@
     .snippet-author {
       text-emphasis: $dark-200;
       font-style: italic;
-    }
-    i{
-      vertical-align: middle;
     }
   }
 }

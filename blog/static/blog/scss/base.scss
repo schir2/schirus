@@ -3,6 +3,7 @@
 @import 'components';
 @import 'grid';
 @import 'lengths';
+@import 'buttons';
 
 *{
   font-family: $primary-font;
@@ -16,4 +17,8 @@ a{
 .content{
     max-width: $xl;
     margin: 0 auto;
+}
+
+.material-icons{
+  vertical-align: middle;
 }
