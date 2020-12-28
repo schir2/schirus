@@ -62,9 +62,13 @@ def like_post_view(request):
         user = request.user
         post_id = request.POST.get('post_id')
         post = Post.objects.get(pk=post_id)
+        context = {
+            'post_id': post_id,
+        }
         if user.username in post.liked_by:
             post.likes.remove(user)
-            return JsonResponse({'like': False})
+            context['like'] = False
         else:
             post.likes.add(user)
-            return JsonResponse({'like': True})
+            context['like'] = True
+        return JsonResponse(context)

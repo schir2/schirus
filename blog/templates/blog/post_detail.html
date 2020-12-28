@@ -8,10 +8,10 @@
     <div>
     <span>{% for username in post.liked_by %}{{ username }}, {% endfor %}</span>
     </div>
-    <form method="post" id="like-form">
+    <form id="like_form_{{ post.pk }}" class="like_form" method="post">
         {% csrf_token %}
-        <input type="hidden" name="post_id" value="{{ post.pk }}">
-    <button type="submit">Submit</button>
+        <input id="input_post_id_{{ post.pk }}" type="hidden" name="post_id" value="{{ post.pk }}">
+        <button style="font-family:Material Icons; vertical-align: middle;" id="button_{{ post.pk }}" type="submit">favorite</button>
     </form>
 {% endblock %}
 {% block javascript %}
