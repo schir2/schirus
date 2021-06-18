@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY') or 1234
 DEBUG = os.environ.get('DEBUG') or True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['schir.us',]
 
 
 # Application definition
