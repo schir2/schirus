@@ -1,12 +1,18 @@
 import os
 from pathlib import Path
+import environ
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+environ.Env.read_env()
+env = environ.Env(
+    DEBUG=(bool, False)
+)
 
-SECRET_KEY = os.environ.get('SECRET_KEY') or 1234
-DEBUG = os.environ.get('DEBUG') or True
+SECRET_KEY = env('SECRET_KEY')
+
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['schir.us',]
 
@@ -21,20 +27,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-
     'main.apps.MainConfig',
     'blog.apps.BlogConfig',
-
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-
     'crispy_forms',
     'dal',
     'dal_select2',
     'tinymce',
-
     'users',
 
 
