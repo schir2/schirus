@@ -1,0 +1,14 @@
+<header>
+    <nav class="navbar navbar-top">
+        <a class="navbar-link" href="#">Home</a>
+        <a class="navbar-link" href="{% url 'blog:post-list' %}">Blog</a>
+        {% if request.user.is_active %}
+            {{ request.user }}
+            {% include 'blog/components/buttons/logout.html' %}
+        {% else %}
+            {% include 'blog/components/buttons/login.html' %}
+        {% endif %}
+    </nav>
+    {% block header %}
+    {% endblock %}
+</header>

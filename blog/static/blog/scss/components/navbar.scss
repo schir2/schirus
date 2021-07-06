@@ -1,21 +1,23 @@
 @import '../colors';
+@import '../effects';
 
 .navbar {
-    display:flex;
-    justify-content: center;
+  display:flex;
+  justify-content: center;
+  padding-top:.25em;
+  padding-bottom: .25em;
+  align-items:center;
+  background-color: $light-yellow;
+  box-shadow: $box-shadow-s;
 }
 
-.navbar-top {
-    padding-top:.25em;
-    padding-bottom: .25em;
-}
-
-.navbar-link {
-  font-size: 2em;
+.navbar > a {
   text-decoration: none;
-  margin: .1em;
-  padding: .1em;
-  color: $dark-100;
+}
+
+.navbar > * {
+  margin: .5rem;
+  padding: .25rem;
 
   :hover {
     transition: color 1s;

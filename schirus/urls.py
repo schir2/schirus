@@ -9,7 +9,7 @@ from main.views import redirect_to_blog_view
 urlpatterns = [
     path('', redirect_to_blog_view),
     path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
+    path('accounts/', include(('allauth.urls', 'allauth'), namespace='allauth')),
     path('login/', TemplateView.as_view(template_name='users/login.html')),
     path('tinymce/', include('tinymce.urls')),
     path('blog/', include(('blog.urls', 'blog'), namespace='blog'))

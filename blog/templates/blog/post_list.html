@@ -1,32 +1,8 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-    <nav class="search">
-        <form>
-            <input placeholder="Filter">
-        </form>
-    </nav>
-    <a id="add-button" href="{% url 'blog:post-create' %}"><i class="material-icons">add_circle</i></a>
     <div class="grid-container">
         {% for post in posts %}
-            <div class="grid-item snippet">
-                <div class="snippet-header">
-                    <a class="snippet-title" href="{% url 'blog:post-detail' pk=post.pk slug=post.slug %}">{{ post.title }}</a>
-                </div>
-                <div class="snippet-content">
-                    <span class="badge">{{ post.category }}</span>
-                </div>
-                <div class="snippet-footer">
-                    <span class="snippet-author">{{ post.author }}</span>
-                    <span class="snippet-likes">
-                        {{ post.likes_count }}
-                        {% if request.user.username in post.liked_by %}
-                            <i class="material-icons">favorite</i>
-                        {% else %}
-                            <i class="material-icons">favorite_border</i>
-                        {% endif %}
-                    </span>
-                </div>
-            </div>
+            {% include 'blog/components/snippet.html' %}
         {% empty %}
             No Posts Found
     </div>

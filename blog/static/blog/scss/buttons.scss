@@ -11,6 +11,22 @@
   }
 }
 
-button {
+.button {
+  display: block;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  margin: 0.5rem;
+  vertical-align: middle;
+}
 
+.button-login {
+  @extend .button;
+  background-color: $main;
+  color: $light;
+}
+
+.button-logout {
+  @extend .button;
+  background-color: $main;
+  color: $light;
 }

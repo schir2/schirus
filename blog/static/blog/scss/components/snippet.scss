@@ -6,29 +6,31 @@
   display:flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: .5em;
+  padding: 1rem;
   margin: .5em;
-  box-shadow: $box-shadow-m;
-  border-radius: .5em 0 .5em 0;
+  box-shadow: $box-shadow-s;
 
   .snippet-header {
     .snippet-title {
+      display: block;
+      text-align: center;
       font-size: $font-size-300;
+      border-bottom: 1px solid $light-gray;
     }
 
     .snippet-tags {
-      margin: .25em;
+      margin: .25rem;
     }
   }
 
   .snippet-content {
-    padding: .25em;
+    padding: .25rem;
 
   }
 
   .snippet-footer {
     display:flex;
-    padding: .25em;
+    padding: .25rem;
     justify-content: space-between;
     .snippet-author {
       text-emphasis: $dark-200;

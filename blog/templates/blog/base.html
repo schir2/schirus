@@ -28,14 +28,7 @@
 
     </head>
     <body>
-        <header>
-            <nav class="navbar navbar-top">
-                <a class="navbar-link" href="#">Home</a>
-                <a class="navbar-link" href="{% url 'blog:post-list' %}">Blog</a>
-            </nav>
-            {% block header %}
-            {% endblock %}
-        </header>
+        {% include 'blog/components/navbar.html' %}
 
         <div class="content">
             {% block content %}

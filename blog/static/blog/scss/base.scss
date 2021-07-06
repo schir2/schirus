@@ -4,10 +4,12 @@
 @import 'grid';
 @import 'lengths';
 @import 'buttons';
+@import 'effects';
 
 *{
   font-family: $primary-font;
   color: $dark-100;
+  box-sizing:border-box;
 }
 
 a{
@@ -15,8 +17,11 @@ a{
 }
 
 .content{
-    max-width: $xl;
-    margin: 0 auto;
+  max-width: $xl;
+  margin: 0 auto;
+  box-shadow: $box-shadow-m;
+  height: 100%;
+  padding: 2rem;
 }
 
 .material-icons{
