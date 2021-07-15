@@ -40,12 +40,14 @@ migrate
         - [ ] Base
         - [ ] List
         - [ ] Detail
+          - [ ] Add links to author profile
         - [ ] Delete Popover
         - [ ] Create
         - [ ] Update
         - [ ] Search
     - [ ] Components
         - [ ] Like Button
+        - [ ] Add Author Url
     - [ ] Stylesheets
         - [x] Setup scss
         - [x] Convert css to scss
@@ -65,3 +67,15 @@ migrate
         - [ ] Like Ajax Method
     - [ ] Scripts
         - [ ] Migrations
+    
+- [ ] User
+    - [ ] Models
+        - [ ] Profile
+    - [ ] Views
+        - [ ] ProfileView
+        - [ ] Login
+        - [ ] Logout
+    - [ ] Urls
+        - [ ] Profile
+        - [ ] Login
+        - [ ] Logout

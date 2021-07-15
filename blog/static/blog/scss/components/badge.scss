@@ -2,8 +2,8 @@
 @import '../effects';
 
 .badge {
-  display:inline-block;
-  background-color:$light-200;
-  box-shadow: $box-shadow-s;
-  padding: .1em .3em .1em .3em;
+  display: inline-block;
+  background-color: $light-200;
+  padding: .2rem 1rem;
+  margin-bottom: 1rem;
 }

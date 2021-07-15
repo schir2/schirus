@@ -1,12 +1,14 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-    <a href="{% url 'blog:post-detail' pk=post.pk slug=post.slug %}">{{ post.title }}</a>
+    <h1>{{ post.title }}</h1>
+    <a class="badge" href="#">{{ post.category }}</a>
+    <span class="author">by {{ post.author.get_name_or_username }}
+    </span>
+    <span class="date">{{ post.created_on }}</span>
     {{ post.content | safe }}
-    {{ post.author }}
     <a href="{% url 'blog:post-update' pk=post.pk slug=post.slug %}">edit</a>
     <a href="{% url 'blog:post-delete' pk=post.pk slug=post.slug %}">delete</a>
     <div>
-    <span>{% for username in post.liked_by %}{{ username }}, {% endfor %}</span>
     </div>
     <form id="like_form_{{ post.pk }}" class="like_form" method="post">
         {% csrf_token %}
