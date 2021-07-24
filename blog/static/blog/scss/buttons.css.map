@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAGA,WAAW;EACT,QAAQ,EAAC,QAAQ;EACjB,GAAG,EAAE,GAAG;EACR,IAAI,EAAE,GAAG",
-"sources": ["buttons.scss"],
-"names": [],
-"file": "buttons.css"
-}

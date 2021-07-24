@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;400;500;900&family=Roboto:wght@100;400;500;900&display=swap');
+$font-primary: 'Roboto', sans-serif;
+$font-secondary: 'Roboto Slab', serif;
+$color-dark: #262626;
+$color-gray: #39393A;
+$color-light: #F2E8CF;
+$color-primary: #EFE;
+$color-blue: #26547c;
+$color-red: #BC4749;
+$color-green: #A7C957;
+$width-sm: 480px;
+$width-m: 768px;
+$width-l: 1024px;
+$width-xl: 1200px;
+
+%heading2 {
+  color: $color-dark;
+  transition: all 1s ease;
+  font-size:1.5rem;
+  &:hover{
+    color: $color-red;
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {transform: fade-in(0);
+  }
+  to {
+    transform: fade-in(1);
+  }
+}
+
+section {
+  &.content {
+    max-width: $width-m;
+    margin: 0 auto;
+    animation: .5s ease-out 0s 1 slideInFromBottom;
+  }
+}
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: $font-primary;
+  color: $color-dark;
+  line-height:1.5;
+}
+
+p {
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 0.05ch;
+  line-height:1.7;
+}
+
+a {
+  text-decoration: none;
+  transition:all 1s ease-out;
+  color:$color-red;
+
+  &:hover{
+    color: $color-blue;
+  }
+}
+
+header {
+  margin:2rem 0rem;
+  .subheader{
+    .post-info{
+      justify-content: center;
+    }
+  }
+}
+
+h1 {
+  font-family: $font-secondary;
+  text-align: center;
+  line-height: 1.25;
+}
+
+h2 {
+  font-family: $font-secondary;
+  color:$color-dark;
+}
+
+nav {
+  background-color: $color-dark;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  gap: 6ch;
+  padding: .5rem;
+
+  .nav-logo{
+
+  }
+
+  .nav-link{
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight:400;
+  }
+}
+
+.snippet-list{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  .snippet{
+    padding: 1rem;
+    .snippet-header{
+      .snippet-title{
+        @extend %heading2
+      }
+
+    }
+    .snippet-content{
+
+    }
+  }
+
+}
+
+
+.post-info {
+  display: flex;
+  gap: 1ch;
+
+  .post-category {
+    color: $color-blue;
+    transition: all 1s ease;
+
+    &:hover {
+      color: $color-red;
+    }
+  }
+
+  .post-author {
+    font-weight: 500;
+  }
+
+  .post-date {
+    color: $color-gray;
+    font-weight: 300;
+
+  }
+}
+
+.material-icons {
+  font-size:1rem !important;
+  vertical-align: middle;
+}

@@ -1,19 +1,13 @@
 <div class="grid-item snippet">
     <div class="snippet-header">
         <a class="snippet-title" href="{% url 'blog:post-detail' pk=post.pk slug=post.slug %}">{{ post.title }}</a>
-        <span class="badge">{{ post.category }}</span>
     </div>
     <div class="snippet-content">
     </div>
-    <div class="snippet-footer">
-        <span class="snippet-author">{{ post.author }}</span>
-        <span class="snippet-likes">
-            {{ post.likes_count }}
-            {% if request.user.username in post.liked_by %}
-                <i class="material-icons">favorite</i>
-            {% else %}
-                <i class="material-icons">favorite_border</i>
-            {% endif %}
-        </span>
+    <div class="post-info">
+        <a class="post-category" href="#">#{{ post.category }}</a>
+        <!-- TODO Add Author URL -->
+        <a class="post-author" href="#">{{ post.author }}</a>
+        <span class="post-date">{{ post.created_on }}</span>
     </div>
 </div>

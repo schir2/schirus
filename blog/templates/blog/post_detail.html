@@ -1,20 +1,25 @@
 {% extends 'blog/base.html' %}
+{% block subheader %}
+<div class="post-info">
+    <a href="#"><span class="post-category">#{{ post.category }}</span></a>
+    <a class="post-author" href="#">{{ post.author }}</a>
+    <span class="post-date">{{ post.created_on }}</span>
+</div>
+
+{% endblock %}
 {% block content %}
-    <h1>{{ post.title }}</h1>
-    <a class="badge" href="#">{{ post.category }}</a>
-    <span class="author">by {{ post.author.get_name_or_username }}
-    </span>
-    <span class="date">{{ post.created_on }}</span>
-    {{ post.content | safe }}
-    <a href="{% url 'blog:post-update' pk=post.pk slug=post.slug %}">edit</a>
-    <a href="{% url 'blog:post-delete' pk=post.pk slug=post.slug %}">delete</a>
-    <div>
-    </div>
-    <form id="like_form_{{ post.pk }}" class="like_form" method="post">
-        {% csrf_token %}
-        <input id="input_post_id_{{ post.pk }}" type="hidden" name="post_id" value="{{ post.pk }}">
-        <button style="font-family:Material Icons; vertical-align: middle;" id="button_{{ post.pk }}" type="submit">favorite</button>
-    </form>
+    <article>
+        {{ post.content | safe }}
+        <a href="{% url 'blog:post-update' pk=post.pk slug=post.slug %}">edit</a>
+        <a href="{% url 'blog:post-delete' pk=post.pk slug=post.slug %}">delete</a>
+        <div>
+        </div>
+        <form id="like_form_{{ post.pk }}" class="like_form" method="post">
+            {% csrf_token %}
+            <input id="input_post_id_{{ post.pk }}" type="hidden" name="post_id" value="{{ post.pk }}">
+            <button id="button_{{ post.pk }}" type="submit">favorite</button>
+        </form>
+    </article>
 {% endblock %}
 {% block javascript %}
 {% endblock %}

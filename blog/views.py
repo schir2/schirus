@@ -22,12 +22,18 @@ class PostListView(ListView):
     model = Post
     template_name_suffix = '_list'
     context_object_name = 'posts'
+    extra_context = {'title': 'Post List'}
 
 
 class PostDetailView(DetailView):
     model = Post
     template_name_suffix = '_detail'
     context_object_name = 'post'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.object.title
+        return context
 
 
 class PostCreateView(CreateView):
