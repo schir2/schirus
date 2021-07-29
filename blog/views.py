@@ -1,7 +1,6 @@
-from django.views import View
-from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView, TemplateView
-from django.urls import reverse
-from django.http import HttpResponse, JsonResponse
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
+from django.urls import reverse, reverse_lazy
+from django.http import JsonResponse
 
 from dal import autocomplete
 
@@ -41,8 +40,8 @@ class PostCreateView(CreateView):
     template_name_suffix = '_form'
     form_class = PostForm
 
-    def get_success_url(self, *args, **kwargs):
-        return reverse('blog:post-list', args=args, kwargs=kwargs)
+    def get_success_url(self):
+        return reverse_lazy('blog:post-detail', kwargs={'pk': self.object.pk, 'slug': self.object.slug})
 
 
 class PostUpdateView(UpdateView):
@@ -50,8 +49,8 @@ class PostUpdateView(UpdateView):
     template_name_suffix = '_form'
     form_class = PostForm
 
-    def get_success_url(self, *args, **kwargs):
-        return reverse('blog:post-list', args=args, kwargs=kwargs)
+    def get_success_url(self):
+        return reverse_lazy('blog:post-detail', kwargs={'pk': self.object.pk, 'slug': self.object.slug})
 
 
 class PostDeleteView(DeleteView):

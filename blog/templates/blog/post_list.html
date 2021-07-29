@@ -1,10 +1,4 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-    <div class="snippet-list">
-        {% for post in posts %}
-            {% include 'blog/components/snippet.html' %}
-        {% empty %}
-            No Posts Found
-    </div>
-{% endfor %}
+    {% include 'blog/components/snippet_list.html' %}
 {% endblock %}

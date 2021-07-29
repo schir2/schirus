@@ -1,4 +1,4 @@
-<div class="grid-item snippet">
+<div class="snippet">
     <div class="snippet-header">
         <a class="snippet-title" href="{% url 'blog:post-detail' pk=post.pk slug=post.slug %}">{{ post.title }}</a>
     </div>
@@ -7,7 +7,7 @@
     <div class="post-info">
         <a class="post-category" href="#">#{{ post.category }}</a>
         <!-- TODO Add Author URL -->
-        <a class="post-author" href="#">{{ post.author }}</a>
+        <a class="post-author" href="{% url 'users:user-profile' username=post.author %}">{{ post.author }}</a>
         <span class="post-date">{{ post.created_on }}</span>
     </div>
 </div>

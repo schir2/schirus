@@ -129,7 +129,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-FIXTURE_DIRS = (os.path.join(BASE_DIR, 'mmportal', 'fixtures'),)
+FIXTURE_DIRS = (os.path.join(BASE_DIR, 'schirus', 'fixtures'),)
 
 SITE_ID = 1
 
@@ -142,13 +142,13 @@ TINYMCE_JS_URL = os.path.join(STATIC_URL, 'tinymce/tinymce.min.js')
 TINYMCE_JS_ROOT = os.path.join(STATIC_URL, 'tinymce')
 TINYMCE_DEFAULT_CONFIG = {
     "height": "320px",
-    "width": "960px",
-    "menubar": "file edit view insert format tools table help",
-    "plugins": "advlist autolink lists link image charmap print preview anchor searchreplace visualblocks code "
-               "fullscreen insertdatetime media table paste code help wordcount spellchecker",
-    "toolbar": "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft "
-    "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor "
-    "backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | "
-    "fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | "
-    "a11ycheck ltr rtl | showcomments addcomment code",
+    "max-width": "768",
+    "menubar": "file edit view insert table help",
+    "plugins": "advlist autolink lists link charmap print preview anchor searchreplace visualblocks"
+               "fullscreen insertdatetime table paste help",
+    "toolbar": "bold italic underline strikethrough | formatselect | alignleft "
+    "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | "
+    "casechange permanentpen formatpainter removeformat"
+    "fullscreen  preview print"
+    "a11ycheck ltr rtl | showcomments addcomment",
 }

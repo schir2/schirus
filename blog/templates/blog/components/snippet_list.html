@@ -1,0 +1,7 @@
+<div class="snippet-list">
+    {% for post in posts %}
+        {% include 'blog/components/snippet.html' %}
+    {% empty %}
+        No Posts Found
+    {% endfor %}
+</div>
