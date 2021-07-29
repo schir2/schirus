@@ -1,0 +1,76 @@
+@import 'fonts';
+@import 'colors';
+@import 'sizes';
+
+
+.navbar {
+  margin: 0 auto;
+  width: $width-l;
+  grid-area:navbar;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'logo links';
+  align-items:center;
+  padding: 2rem;
+
+  &-logo{
+    align-self: center;
+    grid-area:logo;
+    img{
+      margin:0 auto;
+      height:96px;
+    }
+  }
+  input {
+    border:none;
+    border-bottom:.2px solid $color-lightgray;
+    color:$color-dark;
+    font-size:1.25rem;
+    text-align: left;
+    vertical-align: middle;
+    text-indent: 1ch;
+    &:focus, &:hover{
+    }
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: flex-end;
+  }
+  li {
+    list-style: none;
+  }
+
+  &-search{
+    line-height: 1;
+  }
+
+  &-link{
+    text-transform: lowercase;
+    font-size: 1.5em;
+    font-weight:400;
+  }
+}
+
+
+#search-icon, #logout-icon, #user-icon, #add-icon{
+  font-size:2rem;
+  vertical-align: middle;
+  line-height: unset;
+}
+#search-icon, #logout-icon{
+  color:$color-lightgray;
+}
+
+#user-icon{
+  color:$color-lightgray;
+}
+
+ #logout-icon{
+  color:$color-red;
+}
+
+#add-icon {
+  color:$color-lightgray;
+}

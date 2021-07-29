@@ -1,10 +1,26 @@
-<nav>
-    <a class="nav-link" href="#">Home</a>
-    <a class="nav-link" href="{% url 'blog:post-list' %}">Blog</a>
+{% load static %}
+
+<nav class="navbar">
+    <a class="navbar-logo" href="{% url 'blog:home' %}"><img alt="home" src="{% static 'blog/img/logos/logo.png' %}"></a>
+    <ul class="navbar-links">
+        {% include 'blog/components/search.html' %}
     {% if request.user.is_active %}
-        {{ request.user }}
-        {% include 'blog/components/buttons/logout.html' %}
+
+        <li class="navbar-item">
+            <a class="navbar-link" href="{% url 'blog:post-create' %}">
+                <span id="add-icon" class="material-icons">add</span>
+            </a>
+            <a class="navbar-link" href="{% url 'users:user-profile' username=request.user.username %}">
+                <span id="user-icon" class="material-icons">person</span>
+            </a>
+            <a class="navbar-link" href="{% url 'users:logout' %}">
+                <span id="logout-icon" class="material-icons navbar-icon">logout</span>
+            </a>
+        </li>
     {% else %}
-        {% include 'blog/components/buttons/login.html' %}
+        <li class="navbar-item">
+        <a class="navbar-link" href="{% url 'users:login' %}">Login/Register</a>
+        </li>
     {% endif %}
+    </ul>
 </nav>

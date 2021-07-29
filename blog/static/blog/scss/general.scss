@@ -1,0 +1,79 @@
+@import 'fonts';
+@import 'colors';
+@import 'sizes';
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: $font-primary;
+  color: $color-dark;
+  line-height:1.5;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1.5em 1fr 1.5em;
+  grid-template-areas:
+          'navbar navbar navbar'
+          '. content .'
+          'footer footer footer';
+}
+.content {
+  grid-area:content;
+  max-width: $width-m;
+  margin: 0 auto;
+  }
+
+.footer {
+  grid-area:footer;
+}
+
+p {
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 0.05ch;
+  line-height:1.7;
+}
+
+a {
+  text-decoration: none;
+  transition:all 1s ease-out;
+  color:$color-red;
+
+  &:hover{
+    color: $color-blue;
+  }
+}
+
+header {
+  margin:2rem 0;
+  .subheader{
+    .post-info{
+      justify-content: flex-start;
+    }
+  }
+}
+
+
+%heading1 {
+  font-family: $font-secondary;
+  color: $color-dark;
+  font-size:3em;
+  line-height:1.25;
+
+}
+
+%heading2 {
+  font-family: $font-secondary;
+  color: $color-dark;
+  font-size:1.5rem;
+}
+
+
+h1 {
+  @extend %heading1;
+}
+
+h2 {
+  @extend %heading2;
+}
