@@ -22,7 +22,7 @@ def download_image(url: str):
 def resize_to_avatar(infile: BytesIO) -> BytesIO:
     outfile = BytesIO()
     image = Image.open(infile, 'r')
-    image = image.resize((64,64), Image.ANTIALIAS)
+    #image = image.resize((64,64), Image.ANTIALIAS)
     image.save(outfile, format='JPEG', quality=100)
     outfile.seek(0)
     return outfile

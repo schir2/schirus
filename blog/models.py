@@ -23,14 +23,13 @@ class Post(models.Model):
     title = models.CharField(max_length=60)
     content = HTMLField()
     subtitle = models.CharField(max_length=255)
-    author = CurrentUserField(editable=False, related_name='author')
+    user = CurrentUserField()
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True)
     likes = models.ManyToManyField(get_user_model(), related_name='likes', blank=True, editable=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
     class Meta:
-        unique_together = ('title', 'author',)
         ordering = ('-created_on',)
 
     def __str__(self):

@@ -1,4 +1,0 @@
-{% extends 'blog/base.html' %}
-{% block content %}
-    {% include 'blog/components/snippet_list.html' with posts=object.author.select_related.all%}
-{% endblock %}

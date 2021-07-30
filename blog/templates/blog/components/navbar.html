@@ -11,7 +11,7 @@
                 <a class="navbar-link" href="{% url 'blog:post-create' %}">
                     <span id="add-icon" class="material-icons">add</span>
                 </a>
-                <a class="navbar-link navbar-avatar" href="{% url 'users:user-profile' username=request.user.username %}">
+                <a class="navbar-link navbar-avatar" href="{% url 'users:profile-detail' username=request.user.username %}">
                 {% if request.user.profile.avatar %}
                     <img class="avatar" src="{{ request.user.profile.avatar.url }}" alt="avatar">
                 {% else %}

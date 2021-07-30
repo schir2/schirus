@@ -33,12 +33,11 @@
         {% include 'blog/components/navbar.html' %}
 
         <section class="content">
-            <header>
-                <div class="subheader">
-                    {% block subheader %}{% endblock %}
-                </div>
+        <header>
+            {% block header %}
                 <h1>{{ title }}</h1>
-            </header>
+            {% endblock %}
+        </header>
             {% block content %}
             {% endblock %}
         </section>

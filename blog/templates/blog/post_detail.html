@@ -1,10 +1,10 @@
 {% extends 'blog/base.html' %}
-{% block subheader %}
+{% block header %}
 <div class="post-info">
     <a href="#"><span class="post-category">#{{ post.category }}</span></a>
-    <a class="post-author" href="{% url 'users:user-profile' username=post.author.username %}">{{ post.author }}</a>
+    <a class="post-author" href="{% url 'users:profile-detail' username=post.user.username %}">{{ post.user }}</a>
     <span class="post-date">{{ post.created_on }}</span>
-    {% if request.user.is_active and request.user == post.author %}
+    {% if request.user.is_active and request.user == post.user %}
         <a href="{% url 'blog:post-update' pk=post.pk slug=post.slug %}">
             <span id="edit-icon" class="material-icons">edit</span>
         </a>
@@ -13,6 +13,7 @@
         </a>
     {% endif %}
 </div>
+    <h1>{{ title }}</h1>
 
 {% endblock %}
 {% block content %}

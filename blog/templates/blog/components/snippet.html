@@ -7,7 +7,7 @@
     <div class="post-info">
         <a class="post-category" href="#">#{{ post.category }}</a>
         <!-- TODO Add Author URL -->
-        <a class="post-author" href="{% url 'users:user-profile' username=post.author %}">{{ post.author }}</a>
+        <a class="post-author" href="{% url 'users:profile-detail' username=post.user %}">{{ post.user }}</a>
         <span class="post-date">{{ post.created_on }}</span>
     </div>
 </div>

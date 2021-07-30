@@ -2,15 +2,9 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.db.models.signals import post_save
 from allauth.account.signals import user_logged_in
-from allauth.socialaccount.signals import pre_social_login
 from django.dispatch import receiver
 from django.core import files
 from users.ustils import download_image, resize_to_avatar
-
-
-@receiver(pre_social_login)
-def get_profile_picture(sender, **kwargs):
-    print(kwargs)
 
 
 class User(AbstractUser):
@@ -19,7 +13,7 @@ class User(AbstractUser):
         return f'{self.username}'
 
     @property
-    def name(self):
+    def name(self) -> str:
         return ' '.join(
             name for name in [self.first_name, self.last_name] if name
         ) or self.username
