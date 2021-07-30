@@ -5,9 +5,7 @@ from allauth.account.signals import user_logged_in
 from allauth.socialaccount.signals import pre_social_login
 from django.dispatch import receiver
 from django.core import files
-from sorl.thumbnail import get_thumbnail
-
-from users.ustils import download_image
+from users.ustils import download_image, resize_to_avatar
 
 
 @receiver(pre_social_login)
@@ -41,6 +39,10 @@ class Profile(models.Model):
     def save_user_profile(sender, instance, **kwargs):
         instance.profile.save()
 
+    @property
+    def avatar(self):
+        return self.profile_avatar or self.social_avatar
+
     def __str__(self):
         return self.user.name
 
@@ -53,11 +55,5 @@ def get_avatar(sociallogin, user, **kwargs):
             fp = download_image(url)
             if fp:
                 file_name = 'social_avatar.jpeg'
-                print(fp)
-                fp = get_thumbnail(
-                    fp,
-                    '64x64',
-                    quality=99, format='JPEG'
-                )
-                user.profile.profile_avatar = fp
-                user.profile.save()
+                resized_image = files.File(resize_to_avatar(fp))
+                user.profile.social_avatar.save(file_name, resized_image)
