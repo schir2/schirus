@@ -47,6 +47,7 @@
   }
 
   &-links{
+    gap: .5rem;
     display: flex;
 }
 
@@ -54,6 +55,11 @@
     text-transform: lowercase;
     font-size: 1.5em;
     font-weight:400;
+    align-self: center;
+  }
+
+  &-avatar{
+    align-self: flex-end;
   }
 }
 
@@ -77,4 +83,10 @@
 
 #add-icon {
   color:$color-lightgray;
+}
+
+.avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
 }
