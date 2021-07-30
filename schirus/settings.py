@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'dal',
     'dal_select2',
     'tinymce',
+    'sorl.thumbnail',
     'users',
 
 
@@ -136,6 +137,8 @@ SITE_ID = 1
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_ADAPTER = 'users.adapters.CustomAccountAdapter'
+SOCIAL_ACCOUNT_ADAPTER = 'users.adapters.CustomSocialAccountAdapter'
 LOGIN_REDIRECT_URL = '/'
 
 TINYMCE_JS_URL = os.path.join(STATIC_URL, 'tinymce/tinymce.min.js')
