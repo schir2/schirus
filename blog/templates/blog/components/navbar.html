@@ -1,26 +1,25 @@
 {% load static %}
 
 <nav class="navbar">
-    <a class="navbar-logo" href="{% url 'blog:home' %}"><img alt="home" src="{% static 'blog/img/logos/logo.png' %}"></a>
-    <ul class="navbar-links">
-        {% include 'blog/components/search.html' %}
-    {% if request.user.is_active %}
-
-        <li class="navbar-item">
-            <a class="navbar-link" href="{% url 'blog:post-create' %}">
-                <span id="add-icon" class="material-icons">add</span>
-            </a>
-            <a class="navbar-link" href="{% url 'users:user-profile' username=request.user.username %}">
-                <span id="user-icon" class="material-icons">person</span>
-            </a>
-            <a class="navbar-link" href="{% url 'users:logout' %}">
-                <span id="logout-icon" class="material-icons navbar-icon">logout</span>
-            </a>
+    <a class="navbar-logo" href="{% url 'blog:home' %}"><img alt="home" src="{% static 'blog/img/logos/logo-sm-transparent.png' %}"></a>
+    <ul>
+        <li class="navbar-search">
+            {% include 'blog/components/search.html' %}
         </li>
-    {% else %}
-        <li class="navbar-item">
-        <a class="navbar-link" href="{% url 'users:login' %}">Login/Register</a>
+        <li class="navbar-links">
+            {% if request.user.is_active %}
+                <a class="navbar-link" href="{% url 'blog:post-create' %}">
+                    <span id="add-icon" class="material-icons">add</span>
+                </a>
+                <a class="navbar-link" href="{% url 'users:user-profile' username=request.user.username %}">
+                    <span id="user-icon" class="material-icons">person</span>
+                </a>
+                <a class="navbar-link" href="{% url 'users:logout' %}">
+                    <span id="logout-icon" class="material-icons navbar-icon">logout</span>
+                </a>
+            {% else %}
+                <a class="navbar-link" href="{% url 'users:login' %}">Login/Register</a>
+            {% endif %}
         </li>
-    {% endif %}
     </ul>
 </nav>
