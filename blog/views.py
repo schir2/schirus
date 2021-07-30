@@ -1,6 +1,7 @@
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 from django.urls import reverse, reverse_lazy
 from django.http import JsonResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from dal import autocomplete
 
@@ -35,7 +36,8 @@ class PostDetailView(DetailView):
         return context
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
+    login_url = '/'
     model = Post
     template_name_suffix = '_form'
     form_class = PostForm
@@ -44,7 +46,8 @@ class PostCreateView(CreateView):
         return reverse_lazy('blog:post-detail', kwargs={'pk': self.object.pk, 'slug': self.object.slug})
 
 
-class PostUpdateView(UpdateView):
+class PostUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = '/'
     model = Post
     template_name_suffix = '_form'
     form_class = PostForm
@@ -53,7 +56,8 @@ class PostUpdateView(UpdateView):
         return reverse_lazy('blog:post-detail', kwargs={'pk': self.object.pk, 'slug': self.object.slug})
 
 
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
+    login_url = '/'
     model = Post
     template_name_suffix = '_delete'
 

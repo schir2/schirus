@@ -2,7 +2,7 @@ from django.contrib.auth.views import auth_login, auth_logout, LoginView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView
-from .models import Profile, User
+from .models import User
 
 
 def login_view(request):

@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from allauth.account.signals import user_logged_in
 from django.dispatch import receiver
 from django.core import files
-from users.ustils import download_image, resize_to_avatar
+from users.utils import download_image, resize_to_avatar
 
 
 class User(AbstractUser):
