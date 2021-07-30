@@ -4,21 +4,20 @@
 
 
 .navbar {
-  margin: 0 auto;
-  width: $width-l;
   grid-area:navbar;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns:minmax(min-content, 1fr) minmax(min-content, 1fr);
   grid-template-areas: 'logo links';
   align-items:center;
-  padding: 2rem;
+  border-bottom: 1px solid #d0d0d0;
+  padding:1rem;
 
   &-logo{
     align-self: center;
     grid-area:logo;
     img{
       margin:0 auto;
-      height:96px;
+      height:4rem;
     }
   }
   input {
@@ -33,6 +32,7 @@
     }
   }
   ul {
+    grid-area:links;
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -43,8 +43,12 @@
   }
 
   &-search{
-    line-height: 1;
+    display: flex;
   }
+
+  &-links{
+    display: flex;
+}
 
   &-link{
     text-transform: lowercase;
