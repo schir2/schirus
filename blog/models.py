@@ -1,12 +1,10 @@
 from django.db import models
-from abc import ABCMeta, abstractmethod
 from django_currentuser.db.models import CurrentUserField
 from os import path
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from tinymce.models import HTMLField
 from django.utils.text import slugify
-from django.urls import reverse
 
 
 def get_media_upload_path(instance, filename):
@@ -33,6 +31,7 @@ class Post(models.Model):
 
     class Meta:
         unique_together = ('title', 'author',)
+        ordering = ('-created_on',)
 
     def __str__(self):
         return self.title
