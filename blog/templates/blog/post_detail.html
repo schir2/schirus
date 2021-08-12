@@ -18,11 +18,7 @@
 {% endblock %}
 {% block content %}
         {{ post.content | safe }}
-        <form id="like_form_{{ post.pk }}" class="like_form" method="post">
-            {% csrf_token %}
-            <input id="input_post_id_{{ post.pk }}" type="hidden" name="post_id" value="{{ post.pk }}">
-            <button id="button_{{ post.pk }}" type="submit">favorite</button>
-        </form>
+        {% include 'blog/components/buttons/like_button.html' %}
 {% endblock %}
 {% block javascript %}
 {% endblock %}

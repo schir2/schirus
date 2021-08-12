@@ -1,0 +1,13 @@
+{% if request.user.is_active %}
+    <form method="post" hx-post="{% url 'blog:post-like' pk=post.pk slug=post.slug %}">
+        {% csrf_token %}
+        <input type="hidden" name="user" value="{{ request.user.pk }}">
+        <button type="submit">
+            {% if post in request.user.likes.all %}
+                YAY
+            {% else %}
+                NAY
+            {% endif %}
+        </button>
+    </form>
+{% endif %}

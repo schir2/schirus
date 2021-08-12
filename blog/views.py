@@ -1,12 +1,14 @@
-from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
+from django.shortcuts import render
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView, TemplateView
 from django.urls import reverse, reverse_lazy
 from django.http import JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from dal import autocomplete
+from django.views.generic.base import ContextMixin
 
 from blog.models import Post, Category
-from blog.forms import PostForm
+from blog.forms import PostForm, LikePostForm
 
 
 class CategoryAutoCompleteView(autocomplete.Select2QuerySetView):
@@ -65,19 +67,11 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
         return reverse('blog:post-list', args=args, kwargs=kwargs)
 
 
-def like_post_view(request):
+class LikePostView(UpdateView):
     # TODO Finish Ajax JS Method
-    if request.method == 'POST':
-        user = request.user
-        post_id = request.POST.get('post_id')
-        post = Post.objects.get(pk=post_id)
-        context = {
-            'post_id': post_id,
-        }
-        if user.username in post.liked_by:
-            post.likes.remove(user)
-            context['like'] = False
-        else:
-            post.likes.add(user)
-            context['like'] = True
-        return JsonResponse(context)
+    template_name = 'blog/components/buttons/like_button.html'
+    model = Post
+    form_class = LikePostForm
+
+    def get_success_url(self):
+        return reverse_lazy('blog:post-like', kwargs={'pk': self.object.pk, 'slug': self.object.slug})
