@@ -30,6 +30,7 @@
 
     </head>
     <body>
+        {% include 'blog/components/modal.html' %}
         {% include 'blog/components/navbar.html' %}
 
         <section class="content">
@@ -41,11 +42,10 @@
             {% block content %}
             {% endblock %}
         </section>
-
-        <footer>
-            {% block footer %}
-            {% endblock %}
-        </footer>
+        {% block footer %}
+            {% include 'blog/components/footer.html' %}
+        {% endblock %}
+        <script src="{% static 'blog/js/modal.js' %}"></script>
         {% block javascript %}
         {% endblock %}
     </body>
