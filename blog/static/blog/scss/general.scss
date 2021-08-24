@@ -18,16 +18,17 @@ body {
   grid-template-areas:
           '. navbar .'
           '. content .'
-          'footer footer footer';
+          '. footer .';
+  justify-items: center;
 }
 .content {
   grid-area:content;
   width: $width-m;
-  margin: 0 auto;
   }
 
 .footer {
   grid-area:footer;
+  align-content: baseline;
 }
 
 p {
