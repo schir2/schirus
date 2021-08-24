@@ -2,11 +2,11 @@
     <form method="post" hx-post="{% url 'blog:post-like' pk=post.pk slug=post.slug %}">
         {% csrf_token %}
         <input type="hidden" name="user" value="{{ request.user.pk }}">
-        <button type="submit">
+        <button class="like-button" type="submit">
             {% if post in request.user.likes.all %}
-                YAY
+                <i class="liked material-icons">favorite</i>
             {% else %}
-                NAY
+                <i class="unliked material-icons">favorite_border</i>
             {% endif %}
         </button>
     </form>
