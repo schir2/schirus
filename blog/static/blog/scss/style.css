@@ -14,15 +14,16 @@ html {
 body {
   display: grid;
   grid-template-columns: minmax(1.5em, 1fr) 768px minmax(1.5em, 1fr);
-  grid-template-areas: '. navbar .' '. content .' 'footer footer footer'; }
+  grid-template-areas: '. navbar .' '. content .' '. footer .';
+  justify-items: center; }
 
 .content {
   grid-area: content;
-  width: 768px;
-  margin: 0 auto; }
+  width: 768px; }
 
 .footer {
-  grid-area: footer; }
+  grid-area: footer;
+  align-content: baseline; }
 
 p {
   font-size: 1.25rem;
@@ -128,6 +129,34 @@ h2, .snippet-title {
   display: flex;
   align-items: center;
   gap: 1rem; }
+
+.like-button {
+  padding: 0;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  transition: all 1s ease-out; }
+  .like-button:hover {
+    color: #BC4749; }
+  .like-button .liked {
+    color: #BC4749; }
+
+.modal {
+  display: none;
+  z-index: 1;
+  padding: 1rem;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all .5s ease-out;
+  background-color: #EFE;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+  .modal:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
 
 .snippet-list {
   display: flex;
