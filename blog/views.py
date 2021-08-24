@@ -70,6 +70,7 @@ class PostUpdateView(CustomPermissionRequiredMixin, UpdateView):
 class PostDeleteView(CustomPermissionRequiredMixin, DeleteView):
     model = Post
     template_name_suffix = '_delete'
+    extra_context = {'title': 'Delete Form'}
 
     def get_success_url(self, *args, **kwargs):
         return reverse('blog:post-list', args=args, kwargs=kwargs)

@@ -4,7 +4,7 @@
 {% block content %}
     {% csrf_token %}
     {{ form|crispy }}
-    <input class="float-bottom-right btn btn-success" type="submit" value="Save">
+    <input class="float-bottom-right btn-unstyled btn-success" type="submit" value="Save">
 {% endblock %}
 {% block javascript %}
     <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>

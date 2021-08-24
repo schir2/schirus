@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;400;500;900&family=Roboto:wght@100;400;500;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;400;500;900&family=Roboto:wght@100;400;500;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;400;500;900&family=Roboto:wght@100;400;500;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;400;500;900&family=Roboto:wght@100;400;500;900&display=swap");
 * {
   box-sizing: border-box; }
 
@@ -130,7 +131,7 @@ h2, .snippet-title {
   align-items: center;
   gap: 1rem; }
 
-.like-button {
+.btn-unstyled, .btn-like, .btn-confirm, .btn-close {
   padding: 0;
   border: none;
   outline: none;
@@ -139,24 +140,53 @@ h2, .snippet-title {
   background: none;
   cursor: pointer;
   transition: all 1s ease-out; }
-  .like-button:hover {
-    color: #BC4749; }
-  .like-button .liked {
-    color: #BC4749; }
 
-.modal {
-  display: none;
+.btn-like:hover {
+  color: #BC4749; }
+.btn-like .liked {
+  color: #BC4749; }
+
+.btn-confirm {
+  color: #A7C957; }
+  .btn-confirm .material-icons {
+    font-size: 2rem; }
+
+.btn-close {
+  color: #BC4749; }
+  .btn-close .material-icons {
+    font-size: 2rem; }
+
+#modal {
+  opacity: 0;
   z-index: 1;
   padding: 1rem;
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  transition: all .5s ease-out;
-  background-color: #EFE;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
-  .modal:hover {
+  transition: all .2s ease-in;
+  background-color: #F2E8CF;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  text-align: center; }
+  #modal:hover {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
+
+.nav-confirm {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem; }
+
+#page-mask {
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: all 1s ease-in; }
 
 .snippet-list {
   display: flex;

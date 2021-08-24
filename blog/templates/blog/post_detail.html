@@ -11,10 +11,12 @@
         <a
         onclick="openModal()"
         hx-get="{% url 'blog:post-delete' pk=post.pk slug=post.slug %}"
-        hx-target=".modal"
+        hx-target="#modal"
         href="#"
 >
             <span id="delete-icon" class="material-icons">delete</span>
+
+        {% include 'blog/components/buttons/like_button.html' %}
         </a>
     {% endif %}
 </div>
