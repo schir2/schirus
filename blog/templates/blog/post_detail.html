@@ -8,7 +8,12 @@
         <a href="{% url 'blog:post-update' pk=post.pk slug=post.slug %}">
             <span id="edit-icon" class="material-icons">edit</span>
         </a>
-        <a href="{% url 'blog:post-delete' pk=post.pk slug=post.slug %}">
+        <a
+        onclick="openModal()"
+        hx-get="{% url 'blog:post-delete' pk=post.pk slug=post.slug %}"
+        hx-target=".modal"
+        href="#"
+>
             <span id="delete-icon" class="material-icons">delete</span>
         </a>
     {% endif %}
