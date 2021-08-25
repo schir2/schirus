@@ -15,9 +15,9 @@
         href="#"
 >
             <span id="delete-icon" class="material-icons">delete</span>
+        </a>
 
         {% include 'blog/components/buttons/like_button.html' %}
-        </a>
     {% endif %}
 </div>
     <h1>{{ title }}</h1>
@@ -25,7 +25,6 @@
 {% endblock %}
 {% block content %}
         {{ post.content | safe }}
-        {% include 'blog/components/buttons/like_button.html' %}
 {% endblock %}
 {% block javascript %}
 {% endblock %}

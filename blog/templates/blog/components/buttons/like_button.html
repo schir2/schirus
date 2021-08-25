@@ -1,5 +1,9 @@
 {% if request.user.is_active %}
-    <form method="post" hx-post="{% url 'blog:post-like' pk=post.pk slug=post.slug %}">
+    <form
+            id="like-button-{{ post.pk }}"
+            hx-post="{% url 'blog:post-like' pk=post.pk slug=post.slug %}"
+            hx-target="#like-button-{{ post.pk }}"
+    >
         {% csrf_token %}
         <input type="hidden" name="user" value="{{ request.user.pk }}">
         <button class="btn-like" type="submit">
