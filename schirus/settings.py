@@ -130,7 +130,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-FIXTURE_DIRS = (os.path.join(BASE_DIR, 'schirus', 'fixtures'),)
+FIXTURE_DIRS = (os.path.join(BASE_DIR, 'fixtures'),)
 
 SITE_ID = 1
 

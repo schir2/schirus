@@ -1,7 +1,15 @@
 <div class="snippet-list">
-    {% for post in posts %}
-        {% include 'blog/components/snippet.html' %}
-    {% empty %}
-        No Posts Found
-    {% endfor %}
+    {% if page_obj %}
+        {% for post in page_obj %}
+            {% include 'blog/components/snippet.html' %}
+        {% empty %}
+            No Posts Found
+        {% endfor %}
+    {% else %}
+        {% for post in posts %}
+            {% include 'blog/components/snippet.html' %}
+        {% empty %}
+            No Posts Found
+        {% endfor %}
+    {% endif %}
 </div>

@@ -25,7 +25,7 @@ class Post(models.Model):
     subtitle = models.CharField(max_length=255)
     user = CurrentUserField()
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True)
-    likes = models.ManyToManyField(get_user_model(), related_name='likes', blank=True, editable=False)
+    like = models.ManyToManyField(get_user_model(), through='Like', related_name='like', blank=True, editable=False)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
@@ -49,12 +49,8 @@ class Post(models.Model):
         return self.subtitle
 
     @property
-    def likes_count(self) -> int:
-        return self.likes.count()
-
-    @property
-    def liked_by(self) -> set:
-        return set(like['username'] for like in self.likes.all().values())
+    def like_count(self) -> int:
+        return self.post_like.count()
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -77,3 +73,13 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'Categories'
+
+
+class Like(models.Model):
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(get_user_model(), related_name='user_like', on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', related_name='post_like', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.user} liked {self.post}'

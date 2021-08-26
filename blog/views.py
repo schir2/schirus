@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 
 from dal import autocomplete
 
-from blog.models import Post, Category
+from blog.models import Post, Category, Like
 from blog.forms import PostForm, LikePostForm
 
 
@@ -30,6 +30,7 @@ class PostListView(ListView):
     template_name_suffix = '_list'
     context_object_name = 'posts'
     extra_context = {'title': 'Post List'}
+    paginate_by = 20
 
 
 class PostDetailView(DetailView):
@@ -76,11 +77,25 @@ class PostDeleteView(CustomPermissionRequiredMixin, DeleteView):
         return reverse('blog:post-list', args=args, kwargs=kwargs)
 
 
-class LikePostView(LoginRequiredMixin, UpdateView):
+class PostLikeView(LoginRequiredMixin, UpdateView):
     login_url = '/'
     template_name = 'blog/components/buttons/like_button.html'
     model = Post
     form_class = LikePostForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.user:
+            if Like.objects.filter(user=self.request.user, post=self.object):
+                context['liked'] = True
+            else:
+                context['liked'] = False
+        return context
+
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['user'] = self.request.user.pk
+        return initial
 
     def get_success_url(self):
         return reverse_lazy('blog:post-like', kwargs={'pk': self.object.pk, 'slug': self.object.slug})

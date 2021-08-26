@@ -1,7 +1,7 @@
 from django.urls import path, include
 
 from blog.views import CategoryAutoCompleteView
-from blog.views import PostDetailView, PostListView, PostCreateView, PostUpdateView, PostDeleteView, LikePostView
+from blog.views import PostDetailView, PostListView, PostCreateView, PostUpdateView, PostDeleteView, PostLikeView
 
 urlpatterns = [
     path('category', CategoryAutoCompleteView.as_view(create_field='name'), name='category-autocomplete'),
@@ -12,6 +12,6 @@ urlpatterns = [
         path('', PostDetailView.as_view(), name='post-detail'),
         path('update', PostUpdateView.as_view(), name='post-update'),
         path('delete', PostDeleteView.as_view(), name='post-delete'),
-        path('like', LikePostView.as_view(), name='post-like'),
+        path('like', PostLikeView.as_view(), name='post-like'),
     ]))
 ]
