@@ -61,17 +61,15 @@ h2, .snippet-title {
   grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr);
   grid-template-areas: 'logo links';
   align-items: center;
-  border-bottom: 1px solid #d0d0d0;
   padding: 1rem; }
   .navbar-logo {
     align-self: center;
     grid-area: logo; }
     .navbar-logo img {
       margin: 0 auto;
-      height: 4rem; }
+      height: 2.5rem; }
   .navbar input {
     border: none;
-    border-bottom: 0.2px solid #818080;
     color: #262626;
     font-size: 1.25rem;
     text-align: left;

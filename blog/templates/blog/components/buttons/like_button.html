@@ -1,17 +1,8 @@
 {% load custom_tags %}
 {% if request.user.is_active %}
-<a
-            href="#"
-            class="like-button"
-            hx-post="{% url 'blog:post-like' pk=post.pk slug=post.slug %}"
-            hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}'
-            hx-vals='{"user":"{{ request.user.pk }}"}'
-            hx-swap="outerHTML"
-    >
-            {% if liked|user:request.user,post:spotpost %}
-                <i class="liked material-icons">favorite</i>
-            {% else %}
-                <i class="unliked material-icons">favorite_border</i>
-            {% endif %}
+<a href="#" class="like-button" hx-post="{% url 'blog:post-like' pk=post.pk slug=post.slug %}"
+   hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}' hx-vals='{"user":"{{ request.user.pk }}"}'
+   hx-swap="outerHTML">
+    <i class="liked material-icons">{% liked post=post user=request.user %}</i>
 </a>
 {% endif %}

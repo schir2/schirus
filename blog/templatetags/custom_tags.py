@@ -5,5 +5,5 @@ register = template.Library()
 
 
 @register.simple_tag
-def liked(user, post):
-    return 'favrotie' if Like.objects.filter(user=user, post=post) else 'favorite_border'
+def liked(post, user):
+    return 'favorite' if Like.objects.filter(user=user, post=post) else 'favorite_border'
