@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'main.apps.MainConfig',
     'blog.apps.BlogConfig',
+    'rest_framework',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -140,6 +141,13 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_ADAPTER = 'users.adapters.CustomAccountAdapter'
 SOCIAL_ACCOUNT_ADAPTER = 'users.adapters.CustomSocialAccountAdapter'
 LOGIN_REDIRECT_URL = '/'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 TINYMCE_JS_URL = os.path.join(STATIC_URL, 'tinymce/tinymce.min.js')
 TINYMCE_JS_ROOT = os.path.join(STATIC_URL, 'tinymce')
