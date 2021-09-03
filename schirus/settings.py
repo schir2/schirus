@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'main.apps.MainConfig',
     'blog.apps.BlogConfig',
+    'django_filters',
     'rest_framework',
     'allauth',
     'allauth.account',
@@ -145,8 +146,11 @@ LOGIN_REDIRECT_URL = '/'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100,
 }
 
 TINYMCE_JS_URL = os.path.join(STATIC_URL, 'tinymce/tinymce.min.js')
