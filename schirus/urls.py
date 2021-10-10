@@ -5,13 +5,18 @@ from django.conf.urls.static import static
 from django.conf import settings
 from main.views import redirect_to_blog_view
 from rest_framework import routers
+from blog.viewsets import UserViewSet, PostViewSet, CategoryViewSet, LikeViewSet
 
 router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'posts', PostViewSet)
+router.register(r'categories', CategoryViewSet)
+router.register(r'likes', LikeViewSet)
 
 urlpatterns = [
     path('', redirect_to_blog_view),
     path('api-auth/', include('rest_framework.urls')),
-    path('api/', include((router.urls, 'api'), namespace='api')),
+    path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('tinymce/', include('tinymce.urls')),
