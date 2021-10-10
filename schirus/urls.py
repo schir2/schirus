@@ -4,9 +4,14 @@ from django.urls import include
 from django.conf.urls.static import static
 from django.conf import settings
 from main.views import redirect_to_blog_view
+from rest_framework import routers
+
+router = routers.DefaultRouter()
 
 urlpatterns = [
     path('', redirect_to_blog_view),
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/', include((router.urls, 'api'), namespace='api')),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('tinymce/', include('tinymce.urls')),
