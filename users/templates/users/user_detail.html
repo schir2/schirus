@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% block header %}
+    <header class="flex-header">
+        {% if user.profile.avatar %}
+            <img class="profile-image" src="{{ user.profile.avatar.url }}">
+        {% endif %}
+        <h1>{{ title }}</h1>
+    </header>
+{% endblock %}
+{% block content %}
+    {% include 'blog/components/snippet_list.html' with posts=object.post_set.all %}
+{% endblock %}

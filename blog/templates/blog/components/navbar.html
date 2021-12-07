@@ -1,0 +1,29 @@
+{% load static %}
+
+<nav class="navbar">
+    <a class="navbar-logo" href="{% url 'blog:home' %}"><img alt="home" src="{% static 'blog/img/logos/logo-noborder.png' %}"></a>
+    <ul>
+        <li class="navbar-search">
+            {% include 'blog/components/search.html' %}
+        </li>
+        <li class="navbar-links">
+            {% if request.user.is_active %}
+                <a class="navbar-link" href="{% url 'blog:post-create' %}">
+                    <span id="add-icon" class="material-icons">add</span>
+                </a>
+                <a class="navbar-link navbar-avatar" href="{% url 'users:profile-detail' username=request.user.username %}">
+                {% if request.user.profile.avatar %}
+                    <img class="avatar" src="{{ request.user.profile.avatar.url }}" alt="avatar">
+                {% else %}
+                    <span id="user-icon" class="material-icons">person</span>
+                {% endif %}
+                </a>
+                <a class="navbar-link" href="{% url 'users:logout' %}">
+                    <span id="logout-icon" class="material-icons navbar-icon">logout</span>
+                </a>
+            {% else %}
+                <a class="navbar-link" href="{% url 'users:login' %}">Login/Register</a>
+            {% endif %}
+        </li>
+    </ul>
+</nav>

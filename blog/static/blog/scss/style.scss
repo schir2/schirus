@@ -1,0 +1,47 @@
+@import 'fonts';
+@import 'colors';
+@import 'sizes';
+@import 'general';
+@import 'components';
+@import 'forms';
+
+
+.snippet-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.snippet{
+  padding: 1rem;
+  &-header {
+
+  }
+  &-title{
+    @extend %heading2
+  }
+}
+
+
+.post-info {
+  display: flex;
+  gap: 1ch;
+
+  .post-category {
+    color: $color-blue;
+    transition: all 1s ease;
+
+    &:hover {
+      color: $color-red;
+    }
+  }
+
+  .post-author {
+    font-weight: 500;
+  }
+
+  .post-date {
+    color: $color-gray;
+    font-weight: 300;
+
+  }
+}
