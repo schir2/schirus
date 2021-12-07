@@ -52,6 +52,14 @@ class Post(models.Model):
     def like_count(self) -> int:
         return self.post_like.count()
 
+
+    def remove_like(self, user):
+        self.post_like.get(user=user).delete()
+
+    def add_like(self, user):
+        self.post_like.create(user=user, post=self)
+
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
