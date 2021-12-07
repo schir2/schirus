@@ -9,7 +9,7 @@ from blog.viewsets import UserViewSet, PostViewSet, CategoryViewSet, LikeViewSet
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
-router.register(r'posts', PostViewSet)
+router.register(r'blog', PostViewSet)
 router.register(r'categories', CategoryViewSet)
 router.register(r'likes', LikeViewSet)
 
