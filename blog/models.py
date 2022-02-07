@@ -21,8 +21,8 @@ class Article(models.Model):
     title = models.CharField(max_length=60)
     content = models.TextField()
     user = models.ForeignKey(get_user_model(), related_name='User', on_delete=models.CASCADE)
-    categories = models.ManyToManyField('Category', related_name='categories')
-    likes = models.ManyToManyField(get_user_model(), through='Like', related_name='likes')
+    categories = models.ManyToManyField('Category', related_name='categories', blank=True)
+    likes = models.ManyToManyField(get_user_model(), through='Like', related_name='likes', blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
