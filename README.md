@@ -4,7 +4,7 @@
 
 1. activate virtual environment
 2. run `pip install -r requirements.txt`
-3. create `/schirus/.env'` and add `SECRET_KEY=your_key` variable to the file.
+3. create `/core/.env'` and add `SECRET_KEY=your_key` variable to the file.
 
 ## Migrations
 Run the following manage shell commands in order 

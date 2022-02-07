@@ -26,18 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
-    'main.apps.MainConfig',
-    'blog.apps.BlogConfig',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-    'crispy_forms',
-    'dal',
-    'dal_select2',
-    'tinymce',
-    'sorl.thumbnail',
+    'blog',
     'users',
 
 
@@ -51,15 +40,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_currentuser.middleware.ThreadLocalUserMiddleware',
 ]
 
-ROOT_URLCONF = 'schirus.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates']
+        ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,7 +61,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'schirus.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
@@ -121,9 +110,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
@@ -132,26 +118,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 FIXTURE_DIRS = (os.path.join(BASE_DIR, 'fixtures'),)
 
-SITE_ID = 1
 
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_USERNAME_REQUIRED = True
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_ADAPTER = 'users.adapters.CustomAccountAdapter'
-SOCIAL_ACCOUNT_ADAPTER = 'users.adapters.CustomSocialAccountAdapter'
 LOGIN_REDIRECT_URL = '/'
 
-TINYMCE_JS_URL = os.path.join(STATIC_URL, 'tinymce/tinymce.min.js')
-TINYMCE_JS_ROOT = os.path.join(STATIC_URL, 'tinymce')
-TINYMCE_DEFAULT_CONFIG = {
-    "height": "320px",
-    "max-width": "768",
-    "menubar": "file edit view insert table help",
-    "plugins": "advlist autolink lists link charmap print preview anchor searchreplace visualblocks"
-               "fullscreen insertdatetime table paste help",
-    "toolbar": "bold italic underline strikethrough | formatselect | alignleft "
-    "aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | "
-    "casechange permanentpen formatpainter removeformat"
-    "fullscreen  preview print"
-    "a11ycheck ltr rtl | showcomments addcomment",
-}
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
