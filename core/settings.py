@@ -2,6 +2,10 @@ import os
 from pathlib import Path
 import environ
 
+import django
+from django.utils.encoding import force_str
+django.utils.encoding.force_text = force_str
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,9 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'graphene_django'
-    
+    'graphene_django',
     'blog',
     'users',
 
@@ -125,3 +127,7 @@ FIXTURE_DIRS = (os.path.join(BASE_DIR, 'fixtures'),)
 LOGIN_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+GRAPHENE = {
+    "SCHEMA": "api.schema.schema"
+}
