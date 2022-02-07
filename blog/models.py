@@ -20,7 +20,7 @@ class Article(models.Model):
     slug = models.SlugField(default="", editable=False, max_length=60)
     title = models.CharField(max_length=60)
     content = models.TextField()
-    user = models.ForeignKey(get_user_model(), related_name='User', on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), related_name='user', on_delete=models.CASCADE)
     categories = models.ManyToManyField('Category', related_name='categories', blank=True)
     likes = models.ManyToManyField(get_user_model(), through='Like', related_name='likes', blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
