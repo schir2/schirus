@@ -7,7 +7,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client/core'
 
 const cache = new InMemoryCache()
 
-const apolloClient = new ApolloClient({
+export const apolloClient = new ApolloClient({
   cache,
   uri: 'http://localhost:8000',
 })
