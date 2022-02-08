@@ -1,8 +1,8 @@
 <template>
 <nav>
-  <router-link :to="{name:'home'}">Home</router-link>
-  <router-link :to="{name:'blog'}">Blog</router-link>
-  <router-link :to="{name:'about'}">About</router-link>
+  <router-link class="link" :to="{name:'home'}">Home</router-link>
+  <router-link class="link" :to="{name:'blog'}">Blog</router-link>
+  <router-link class="link" :to="{name:'about'}">About</router-link>
 </nav>
 </template>
 
@@ -12,6 +12,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+nav{
+  display: flex;
+  justify-content: center;
+}
 </style>

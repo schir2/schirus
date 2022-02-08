@@ -25,7 +25,28 @@ const routes = [
             title: "Blog",
             auth: false,
         },
-        component: () => import(/* webpackChunkName: "blog" */ "@/pages/blog/index.vue")
+        component: () => import(/* webpackChunkName: "blog" */ "@/pages/blog/index.vue"),
+        children: [
+            {
+                path: 'articles',
+                name: 'articleList',
+                meta: {
+                    title: 'Articles',
+                    auth: false,
+                },
+                component: () => import(/* webpackChunkName: "articles" */ "@/pages/blog/ArticleListPage.vue")
+            },
+            {
+                path: 'articles/$id',
+                name: 'articleDetail',
+                meta: {
+                    title: 'Articles',
+                    auth: false,
+                },
+                component: () => import(/* webpackChunkName: "articleDetail" */ "@/pages/blog/ArticleDetailPage.vue")
+            }
+
+        ]
     },
     {
         path: '/about',
