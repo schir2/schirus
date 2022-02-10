@@ -1,4 +1,4 @@
-import AuthState from "@/store/auth/state";
+import {AuthState} from "@/store/auth/state";
 
 export interface RootState{
     auth: AuthState

@@ -1,5 +1,6 @@
 import App from "@/App.vue";
 import {createApp} from "vue";
+import 'reflect-metadata'
 import router from '@/router'
 import store from "@/store";
 import { createApolloProvider } from '@vue/apollo-option'
@@ -9,7 +10,7 @@ import '@/scss/style.scss'
 
 const cache = new InMemoryCache()
 
-const apolloClient = new ApolloClient({
+export const apolloClient = new ApolloClient({
   cache,
   uri: 'http://localhost:8000',
 })

@@ -1,6 +1,6 @@
-import AuthState from "@/store/auth/state";
-import mutations from "@/store/auth/mutations";
-import actions from "@/store/auth/actions";
+import {AuthState} from "@/store/auth/state";
+import {mutations} from "@/store/auth/mutations";
+import {actions} from "@/store/auth/actions";
 import {getters} from "@/store/auth/getters";
 
 const authStore = {

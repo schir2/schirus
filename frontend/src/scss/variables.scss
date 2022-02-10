@@ -9,7 +9,7 @@ $font-code: 'Roboto Mono', monospace;
 
 /* SCSS HSL */
 $color-jet: hsla(0, 2%, 19%, 1);
-$color-taupe-gray: hsla(353, 4%, 56%, 1);
+$color-taupe-gray: hsla(353, 4%, 76%, 1);
 $color-lavender-blush: hsla(351, 44%, 94%, 1);
 $color-vermilion: hsla(10, 82%, 48%, 1);
 $color-kobe: hsla(8, 68%, 30%, 1);
@@ -17,9 +17,9 @@ $color-raisin-black: hsla(336, 17%, 11%, 1);
 $color-honey-yellow: hsla(40, 89%, 55%, 1);
 $color-maximum-yellow-red: hsla(40, 89%, 65%, 1);
 $color-deep-champagne: hsla(40, 91%, 79%, 1);
-$color-deep-champagne-light: hsla(40, 91%, 97%, 1);
+$color-light: hsla(40, 91%, 99%, 1);
+$color-blue: hsl(208, 53%, 32%);
 
-$color-blue: #26547c;
 
 /* SCSS Gradient */
 $gradient-top: linear-gradient(0deg, #312f2fff, #948c8dff, #f6e8eaff, #e03616ff, #812719ff, #22181cff, #f2af29ff, #f5bf54ff, #fad997ff);

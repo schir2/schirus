@@ -1,6 +1,8 @@
 import {GetterTree} from "vuex";
-import State from "@/store/auth/state";
+import {AuthState} from "@/store/auth/state";
 
-export const getters = <GetterTree<State, any>>{
-
+export const getters = <GetterTree<AuthState, any>>{
+    isLoggedIn: (state: AuthState) => {
+        return state.authUser.loggedIn
+    }
 }

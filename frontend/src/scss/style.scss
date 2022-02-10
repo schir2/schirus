@@ -3,14 +3,24 @@
 
 *{
   font-family: $font-primary;
+  box-sizing: border-box;
 }
 
 body{
-  background-color: $color-deep-champagne-light;
+  background-color: $color-light;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-secondary;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
 }
 
 a{
