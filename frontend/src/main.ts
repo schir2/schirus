@@ -4,10 +4,12 @@ import router from '@/router'
 import store from "@/store";
 import { createApolloProvider } from '@vue/apollo-option'
 import { ApolloClient, InMemoryCache } from '@apollo/client/core'
+import "normalize.css"
+import '@/scss/style.scss'
 
 const cache = new InMemoryCache()
 
-export const apolloClient = new ApolloClient({
+const apolloClient = new ApolloClient({
   cache,
   uri: 'http://localhost:8000',
 })

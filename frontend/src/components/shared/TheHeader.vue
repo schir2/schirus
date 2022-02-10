@@ -1,5 +1,5 @@
 <template>
-<header>
+<header class="header">
   <h1 v-if="$route.meta.title">{{$route.meta.title}}</h1>
 </header>
 </template>

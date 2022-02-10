@@ -1,0 +1,21 @@
+@import "variables";
+@import "mixins";
+
+*{
+  font-family: $font-primary;
+}
+
+body{
+  background-color: $color-deep-champagne-light;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-secondary;
+}
+
+a{
+  color: $color-kobe;
+  text-decoration: none;
+  font-family: $font-secondary;
+  font-weight: 500;
+}

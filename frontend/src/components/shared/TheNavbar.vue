@@ -1,5 +1,5 @@
 <template>
-<nav>
+<nav class="top-nav">
   <router-link class="link" :to="{name:'home'}">Home</router-link>
   <router-link class="link" :to="{name:'blog'}">Blog</router-link>
   <router-link class="link" :to="{name:'about'}">About</router-link>
@@ -13,7 +13,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-nav{
+.top-nav{
   display: flex;
   justify-content: center;
 }
