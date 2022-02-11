@@ -17,8 +17,14 @@ $color-raisin-black: hsla(336, 17%, 11%, 1);
 $color-honey-yellow: hsla(40, 89%, 55%, 1);
 $color-maximum-yellow-red: hsla(40, 89%, 65%, 1);
 $color-deep-champagne: hsla(40, 91%, 79%, 1);
+
+
 $color-light: hsla(40, 91%, 99%, 1);
 $color-blue: hsl(208, 53%, 32%);
+$color-yellow: $color-honey-yellow;
+$color-red: $color-vermilion;
+$color-dark: $color-raisin-black;
+$color-link: $color-blue;
 
 
 /* SCSS Gradient */

@@ -1,5 +1,8 @@
 <template>
   <nav class="top-nav">
+    <ul class="branding">
+      <img class="logo" src="@/assets/logo.gif">
+    </ul>
     <ul class="links">
       <li class="link" ><router-link :to="{name:'home'}">Home</router-link></li>
       <li class="link" ><router-link :to="{name:'blog'}">Blog</router-link></li>
@@ -25,17 +28,22 @@ export default {
   grid-template-areas: "branding links controls";
   margin-top: .25rem;
   border-bottom: .1rem solid $color-taupe-gray;
+  align-items: center;
 }
 
 .branding {
   grid-area: branding;
+  display: flex;
+  justify-content: flex-end;
+  .logo{
+    height:2rem; width: 2rem;
+  }
 }
 
 .links {
   grid-area: links;
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 1rem;
 
 
