@@ -1,13 +1,15 @@
 <template>
-  <nav class="secondary-nav">
-    <NavLink :to="{name:'pdf-merge'}">PDF Merge</NavLink>
+  <div>
+    <nav class="secondary-nav">
+      <NavLink :to="{name:'pdf-merge'}">PDF Merge</NavLink>
+    </nav>
     <router-view/>
-  </nav>
-
+  </div>
 </template>
 
 <script>
 import NavLink from "@/components/shared/NavLink";
+
 export default {
   name: "index",
   components: {NavLink}
@@ -15,7 +17,7 @@ export default {
 </script>
 
 <style scoped>
-.secondary-nav{
+.secondary-nav {
   display: flex;
   justify-content: center;
 }

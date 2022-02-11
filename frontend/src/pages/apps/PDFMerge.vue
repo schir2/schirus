@@ -1,8 +1,8 @@
 <template>
   <div>
     <form>
-      <ul class="files">
-        <li v-for="(file, index) in files" :key="index">{{ file }}</li>
+      <ul class="file-drop-zone">
+        <li class="file-drop-zone-item" draggable="true" v-for="(file, index) in files" :key="index">{{ file.name }}</li>
       </ul>
       <input type="file" @change="handleFileUpload">
       <button @click.prevent="onClickMerge">Merge</button>
@@ -37,14 +37,20 @@ export default {
 
     },
     async handleFileUpload(event) {
-      const file = await event.target.files[0].arrayBuffer()
-      console.log(file)
+      const file = await event.target.files[0]
       this.files.push(file)
     },
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.file-drop-zone{
+  height:40vh;
+  background-color: $color-deep-champagne;
+}
+.file-drop-zone-item{
+  background-color: $color-yellow;
+}
 
 </style>
