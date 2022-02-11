@@ -49,6 +49,28 @@ const routes = [
         ]
     },
     {
+        path: '/apps',
+        name: 'apps',
+        meta: {
+            title: "Apps",
+            auth: false,
+        },
+        component: () => import(/* webpackChunkName: "blog" */ "@/pages/apps/index.vue"),
+        children: [
+            {
+                path: 'pdf-merge',
+                name: 'pdf-merge',
+                meta: {
+                    title: "PDF Merge",
+                    auth: false,
+                },
+                component: () => import(/* webpackChunkName: "blog" */ "@/pages/apps/PDFMerge.vue"),
+            }
+        ]
+
+
+    },
+    {
         path: '/about',
         name: 'about',
         meta: {

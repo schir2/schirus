@@ -4,9 +4,18 @@
       <img class="logo" src="@/assets/logo.gif">
     </ul>
     <ul class="links">
-      <li class="link" ><router-link :to="{name:'home'}">Home</router-link></li>
-      <li class="link" ><router-link :to="{name:'blog'}">Blog</router-link></li>
-      <li class="link" ><router-link :to="{name:'about'}">About</router-link></li>
+      <li class="link">
+        <NavLink :to="{name:'home'}">Home</NavLink>
+      </li>
+      <li class="link">
+        <NavLink :to="{name:'blog'}">Blog</NavLink>
+      </li>
+      <li class="link">
+        <NavLink :to="{name:'apps'}">Apps</NavLink>
+      </li>
+      <li class="link">
+        <NavLink :to="{name:'about'}">About</NavLink>
+      </li>
     </ul>
     <ul class="controls">
       <AuthSmall></AuthSmall>
@@ -16,9 +25,11 @@
 
 <script>
 import AuthSmall from "@/components/shared/AuthSmall";
+import NavLink from "@/components/shared/NavLink";
+
 export default {
   name: "TheNavbar",
-  components: {AuthSmall}
+  components: {NavLink, AuthSmall}
 }
 </script>
 
@@ -26,6 +37,7 @@ export default {
 .top-nav {
   display: grid;
   grid-template-areas: "branding links controls";
+  grid-template-columns: minmax(12ch, 1fr) 1fr minmax(12ch, 1fr);
   margin-top: .25rem;
   border-bottom: .1rem solid $color-taupe-gray;
   align-items: center;
@@ -35,8 +47,10 @@ export default {
   grid-area: branding;
   display: flex;
   justify-content: flex-end;
-  .logo{
-    height:2rem; width: 2rem;
+
+  .logo {
+    height: 2rem;
+    width: 2rem;
   }
 }
 
@@ -45,20 +59,7 @@ export default {
   display: flex;
   justify-content: center;
   gap: 1rem;
-
-
-  .link {
-    padding: .25rem .5rem;
-    transition: all .1s ease-in;
-
-    &:hover {
-    box-shadow: 0 0 0 2px $color-blue;
-    }
-  }
-
-  .active {
-    border-bottom: .2rem solid $color-kobe;
-  }
+  
 }
 
 .controls {

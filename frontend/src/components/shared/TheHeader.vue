@@ -1,7 +1,7 @@
 <template>
-<header class="header">
-  <h1 v-if="$route.meta.title">{{$route.meta.title}}</h1>
-</header>
+  <header class="header">
+    <h1 v-if="$route.meta.title">{{ $route.meta.title }}</h1>
+  </header>
 </template>
 
 <script>
@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style scoped>
-
+.header {
+  text-align: center;
+}
 </style>

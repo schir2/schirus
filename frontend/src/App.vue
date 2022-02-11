@@ -26,7 +26,7 @@ export default {
       ". content ."
       "footer footer footer";
   grid-template-columns: minmax(0,1fr) minmax(700px, 1440px) minmax(0,1fr);
-  grid-template-rows: 3rem 1fr 2rem;
+  grid-template-rows: 3rem 5rem 1fr 2rem;
 }
 
 .top-nav {
