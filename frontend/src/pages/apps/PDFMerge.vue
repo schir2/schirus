@@ -1,9 +1,16 @@
 <template>
   <div>
     <form>
-      <ul class="file-drop-zone">
-        <li class="file-drop-zone-item" draggable="true" v-for="(file, index) in files" :key="index">{{ file.name }}</li>
-      </ul>
+      <draggable-component
+          class="file-drop-zone"
+          v-model="files"
+          @start="drag=true"
+          @end="drag=false"
+          item-key="id">
+        <template #item="{element}">
+          <div>{{ element.name }}</div>
+        </template>
+      </draggable-component>
       <input type="file" @change="handleFileUpload">
       <button @click.prevent="onClickMerge">Merge</button>
     </form>
@@ -13,12 +20,15 @@
 <script>
 
 import {pdfService} from "@/services/PDFService";
+import draggableComponent from "vuedraggable"
 
 export default {
   name: "PDFMerge",
+  components: {draggableComponent},
   data() {
     return {
-      files: []
+      files: [],
+      drag: false
     }
   },
   methods: {
@@ -26,14 +36,7 @@ export default {
       const arrayBuffer = await pdfService.merge(this.files)
       const blob = new Blob([arrayBuffer], {type: 'application/pdf'})
       const objectUrl = URL.createObjectURL(blob)
-      const link = document.createElement('a');
-      link.style.display = 'none';
-      document.body.appendChild(link);
-      link.href = objectUrl;
-      link.href = URL.createObjectURL(blob);
-      link.download = 'data.pdf';
-      link.click();
-      return objectUrl
+      window.open(objectUrl, '', 'height=650,width=840');
 
     },
     async handleFileUpload(event) {
@@ -45,11 +48,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.file-drop-zone{
-  height:40vh;
+.file-drop-zone {
+  height: 40vh;
   background-color: $color-deep-champagne;
 }
-.file-drop-zone-item{
+
+.file-drop-zone-item {
   background-color: $color-yellow;
 }
 
