@@ -1,6 +1,7 @@
 <template>
   <nav class="secondary-nav">
     <NavLink :to="{name:'pdf-merge'}">PDF Merge</NavLink>
+    <router-view/>
   </nav>
 
 </template>
