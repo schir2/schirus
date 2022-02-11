@@ -3,12 +3,14 @@ import {createApp} from "vue";
 import 'reflect-metadata'
 import router from '@/router'
 import store from "@/store";
+import VueToast from 'vue-toast-notification';
 import { createApolloProvider } from '@vue/apollo-option'
 import { ApolloClient, InMemoryCache } from '@apollo/client/core'
 import "normalize.css"
 import '@/scss/style.scss'
-import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
+import 'material-icons/iconfont/material-icons.css';
+
 
 const cache = new InMemoryCache()
 

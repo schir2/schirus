@@ -13,9 +13,10 @@
           </div>
         </template>
       </draggable-component>
-      <input type="file" multiple @change="onUploadHandler">
-      <div @drop="onDropHandler" class="drop-zone">
-        <span class="display-1">Drop You File Here</span>
+      <input type="file" multiple ref="fileInput" style="display:none" @change="onUploadHandler">
+      <div @drop="onDropHandler" class="drop-zone" @click="$refs.fileInput.click()">
+        <span class="material-icons icon">file_upload</span>
+        <span class="display-1">Drop Your Files Here</span>
       </div>
       <button @click.prevent="onClickMerge">Merge</button>
     </form>
@@ -82,10 +83,25 @@ export default {
 
 <style scoped lang="scss">
 .drop-zone {
-  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+  padding: 20px;
+  border-width: 2px;
+  border-radius: 2px;
+  border-style: dashed;
+  background-color: #fafafa;
+  color: #bdbdbd;
+  outline: none;
+  transition: border .24s ease-in-out;
+  .icon {
+    font-size: 5rem;
+  }
 }
 
-.file-drop-zone-item {
+.file {
   background-color: $color-yellow;
 }
 
