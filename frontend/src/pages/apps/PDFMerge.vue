@@ -8,8 +8,9 @@
           @end="drag=false"
           item-key="id">
         <template #item="{element, index}">
-          <div class="file"><span>{{ element.name }}</span>
+          <div class="file"><span>{{ element.file.name }}</span>
             <button @click.prevent="removeFile(index)">Remove</button>
+            <iframe :src="element.thumbnail"></iframe>
           </div>
         </template>
       </draggable-component>
@@ -45,18 +46,21 @@ export default {
       window.open(objectUrl, '', 'height=650,width=840');
 
     },
-    addFiles(files) {
+    async addFiles(files) {
       const success = []
       const errors = []
-      files.forEach(file => {
+      for (const file of files) {
 
         if (file.name.endsWith('.pdf')) {
-          this.files.push(file)
+          const arrayBuffer = await pdfService.generateThumbnail(file)
+          const blob = new Blob([arrayBuffer], {type: 'application/pdf'})
+          const objectUrl = URL.createObjectURL(blob)
+          this.files.push({file: file, thumbnail: objectUrl})
           success.push(file.name)
         } else {
           errors.push(file.name)
         }
-      })
+      }
       if (success.length !== 0) {
         this.$toast.success(`Added ${success.length} files.`)
       }
@@ -65,7 +69,7 @@ export default {
       }
     },
     removeFile(index) {
-      this.$toast.warning(`Removed ${this.files[index].name}`)
+      this.$toast.warning(`Removed ${this.files[index].file.name}`)
       this.files.splice(index, 1)
     }
     ,
@@ -96,6 +100,7 @@ export default {
   color: #bdbdbd;
   outline: none;
   transition: border .24s ease-in-out;
+
   .icon {
     font-size: 5rem;
   }
