@@ -50,7 +50,6 @@ const authService = {
         return Promise.reject(response.errors)
     },
     async logout() {
-        //TODO Implement server logout
         this.AuthStorage.removeAuthUser()
     },
 

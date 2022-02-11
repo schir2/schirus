@@ -2,10 +2,11 @@
   <div v-if="!auth.authUser?.loggedIn" class="auth-small">
     <input type="text" v-model="username">
     <input type="password" v-model="password">
-    <button @click.prevent="onClickLogin">Login</button>
+    <button @click.prevent="login">Login</button>
   </div>
   <div v-else>
-    {{auth.authUser}}
+    <a>{{ auth.authUser.username }}</a>
+    <button @click="logout">Logout</button>
   </div>
 
 </template>
@@ -15,7 +16,7 @@ import {mapGetters, mapState} from "vuex";
 
 export default {
   name: "LoginSmall",
-  data(){
+  data() {
     return {
       username: "",
       password: ""
@@ -30,8 +31,11 @@ export default {
     ])
   },
   methods: {
-    onClickLogin(){
+    login() {
       this.$store.dispatch('auth/login', {username: this.username, password: this.password})
+    },
+    logout() {
+      this.$store.dispatch('auth/logout')
     }
   }
 }

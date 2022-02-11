@@ -21,6 +21,8 @@ export const actions = <ActionTree<AuthState, any>>{
         )
     },
     logout({commit}: { commit: Commit }) {
+        authService.logout()
+        commit('logout')
     },
     setAccessToken({commit}, accessToken) {
     },
