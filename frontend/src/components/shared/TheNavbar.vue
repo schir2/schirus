@@ -9,16 +9,16 @@
       <li class="link" ><router-link :to="{name:'about'}">About</router-link></li>
     </ul>
     <ul class="controls">
-      <LoginSmall></LoginSmall>
+      <AuthSmall></AuthSmall>
     </ul>
   </nav>
 </template>
 
 <script>
-import LoginSmall from "@/components/shared/LoginSmall";
+import AuthSmall from "@/components/shared/AuthSmall";
 export default {
   name: "TheNavbar",
-  components: {LoginSmall}
+  components: {AuthSmall}
 }
 </script>
 
