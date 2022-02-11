@@ -7,11 +7,13 @@
           @start="drag=true"
           @end="drag=false"
           item-key="id">
-        <template #item="{element}">
-          <div class="file"><span>{{ element.name }}</span><button @click="onRemoveFile(element)">Remove</button></div>
+        <template #item="{element, index}">
+          <div class="file"><span>{{ element.name }}</span>
+            <button @click.prevent="removeFile(index)">Remove</button>
+          </div>
         </template>
       </draggable-component>
-      <input type="file" @change="handleFileUpload">
+      <input type="file" multiple @change="onUploadHandler">
       <div @drop="onDropHandler" class="drop-zone">
         <span class="display-1">Drop You File Here</span>
       </div>
@@ -42,17 +44,20 @@ export default {
       window.open(objectUrl, '', 'height=650,width=840');
 
     },
-    async handleFileUpload(event) {
-      const file = await event.target.files[0]
-      this.files.push(file)
+    addFiles(files) {
+      files.forEach(file => {
+        this.files.push(file)
+      })
+    },
+    removeFile(index) {
+      this.files.splice(index, 1)
+    },
+    async onUploadHandler(event) {
+      this.addFiles(event.target.files)
     },
     async onDropHandler(event) {
-      const file = await event.dataTransfer.files[0]
-      this.files.push(file)
+      this.addFiles(event.dataTransfer.files)
     },
-    onRemoveFile(file){
-      this.files = this.files.filter(curFile =>{return curFile !== file})
-    }
   }
 }
 </script>
