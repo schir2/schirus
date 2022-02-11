@@ -45,19 +45,37 @@ export default {
 
     },
     addFiles(files) {
+      const success = []
+      const errors = []
       files.forEach(file => {
-        this.files.push(file)
+
+        if (file.name.endsWith('.pdf')) {
+          this.files.push(file)
+          success.push(file.name)
+        } else {
+          errors.push(file.name)
+        }
       })
+      if (success.length !== 0) {
+        this.$toast.success(`Added ${success.length} files.`)
+      }
+      if (errors.length !== 0) {
+        this.$toast.error(`Failed to add ${errors.length} files.`)
+      }
     },
     removeFile(index) {
+      this.$toast.warning(`Removed ${this.files[index].name}`)
       this.files.splice(index, 1)
-    },
+    }
+    ,
     async onUploadHandler(event) {
       this.addFiles(event.target.files)
-    },
+    }
+    ,
     async onDropHandler(event) {
       this.addFiles(event.dataTransfer.files)
-    },
+    }
+    ,
   }
 }
 </script>
@@ -65,7 +83,6 @@ export default {
 <style scoped lang="scss">
 .drop-zone {
   height: 20vh;
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
 
 .file-drop-zone-item {

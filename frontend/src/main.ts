@@ -7,6 +7,8 @@ import { createApolloProvider } from '@vue/apollo-option'
 import { ApolloClient, InMemoryCache } from '@apollo/client/core'
 import "normalize.css"
 import '@/scss/style.scss'
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
 
 const cache = new InMemoryCache()
 
@@ -24,4 +26,5 @@ const app = createApp(App)
 app.use(router)
 app.use(store)
 app.use(apolloProvider)
+app.use(VueToast)
 app.mount("#app")
