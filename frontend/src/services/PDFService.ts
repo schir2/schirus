@@ -1,4 +1,3 @@
-const fs = require('fs')
 import {PDFDocument} from "pdf-lib";
 
 export const pdfService = {

@@ -1,17 +1,20 @@
 <template>
-  <div>
+  <div @dragover.prevent @drop.prevent>
     <form>
       <draggable-component
-          class="file-drop-zone"
+          class="files"
           v-model="files"
           @start="drag=true"
           @end="drag=false"
           item-key="id">
         <template #item="{element}">
-          <div>{{ element.name }}</div>
+          <div class="file"><span>{{ element.name }}</span><button @click="onRemoveFile(element)">Remove</button></div>
         </template>
       </draggable-component>
       <input type="file" @change="handleFileUpload">
+      <div @drop="onDropHandler" class="drop-zone">
+        <span class="display-1">Drop You File Here</span>
+      </div>
       <button @click.prevent="onClickMerge">Merge</button>
     </form>
   </div>
@@ -43,14 +46,21 @@ export default {
       const file = await event.target.files[0]
       this.files.push(file)
     },
+    async onDropHandler(event) {
+      const file = await event.dataTransfer.files[0]
+      this.files.push(file)
+    },
+    onRemoveFile(file){
+      this.files = this.files.filter(curFile =>{return curFile !== file})
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.file-drop-zone {
-  height: 40vh;
-  background-color: $color-deep-champagne;
+.drop-zone {
+  height: 20vh;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
 
 .file-drop-zone-item {

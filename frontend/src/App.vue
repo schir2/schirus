@@ -25,7 +25,7 @@ export default {
       ". header ."
       ". content ."
       "footer footer footer";
-  grid-template-columns: minmax(0,1fr) minmax(700px, 1440px) minmax(0,1fr);
+  grid-template-columns: minmax(0,1fr) minmax(700px, 1024px) minmax(0,1fr);
   grid-template-rows: 3rem 5rem 1fr 2rem;
 }
 
