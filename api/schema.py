@@ -47,16 +47,16 @@ class ArticleNode(DjangoObjectType):
 class LikeNode(DjangoObjectType):
     class Meta:
         model = Like
-        filter_fields = ('id', 'user', 'article', 'created_on', 'updated_on')
+        filter_fields = ('id', 'user', 'article', 'created_on')
         interfaces = (relay.Node,)
 
 
 class Query(UserQuery, MeQuery, ObjectType):
     category = relay.Node.Field(CategoryNode)
-    all_categories = DjangoFilterConnectionField(CategoryNode)
+    categories = DjangoFilterConnectionField(CategoryNode)
 
     article = relay.Node.Field(ArticleNode)
-    all_articles = DjangoFilterConnectionField(ArticleNode)
+    articles = DjangoFilterConnectionField(ArticleNode)
 
 
 class Mutation(AuthMutation, ObjectType):
