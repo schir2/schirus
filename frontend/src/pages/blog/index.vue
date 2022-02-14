@@ -1,5 +1,6 @@
 <template>
   <div>
+    <router-link :to="{name:'articleAdd'}">Add</router-link>
     <router-view></router-view>
   </div>
 </template>

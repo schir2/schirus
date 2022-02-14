@@ -44,7 +44,15 @@ const routes = [
                     auth: false,
                 },
                 component: () => import(/* webpackChunkName: "articleDetail" */ "@/pages/blog/ArticleDetailPage.vue")
-            }
+            },
+            {
+                path: 'articles/add',
+                name: 'articleAdd',
+                meta: {
+                    title: 'Add Article',
+                    auth: true,
+                },
+                component: () => import(/* webpackChunkName: "articleAdd" */ "@/pages/blog/ArticleAddPage.vue")}
 
         ]
     },

@@ -1,10 +1,10 @@
 <template>
-  <div></div>
+  <div class="articles"></div>
 </template>
 
 <script>
 export default {
-  name: "ArticleCreatePage"
+  name: "ArticleList"
 }
 </script>
 
