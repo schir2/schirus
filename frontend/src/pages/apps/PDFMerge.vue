@@ -8,9 +8,10 @@
           @end="drag=false"
           item-key="id">
         <template #item="{element, index}">
-          <div class="file"><span>{{ element.file.name }}</span>
-            <button @click.prevent="removeFile(index)">Remove</button>
-            <iframe :src="element.thumbnail"></iframe>
+          <div class="file">
+            <button class="material-icons file-action" @click.prevent="removeFile(index)">delete</button>
+            <span class="file-heading">{{ element.file.name.substring(0, element.file.name.length-4) }}</span>
+            <iframe class="file-thumbnail" :src="element.thumbnail"></iframe>
           </div>
         </template>
       </draggable-component>
@@ -40,9 +41,8 @@ export default {
   },
   methods: {
     async onClickMerge() {
-      const arrayBuffer = await pdfService.merge(this.files)
-      const blob = new Blob([arrayBuffer], {type: 'application/pdf'})
-      const objectUrl = URL.createObjectURL(blob)
+      const objectUrl = await pdfService.generateMergedObjectUrl(
+          this.files.map(file => file.file))
       window.open(objectUrl, '', 'height=650,width=840');
 
     },
@@ -52,10 +52,7 @@ export default {
       for (const file of files) {
 
         if (file.name.endsWith('.pdf')) {
-          const arrayBuffer = await pdfService.generateThumbnail(file)
-          const blob = new Blob([arrayBuffer], {type: 'application/pdf'})
-          const objectUrl = URL.createObjectURL(blob)
-          this.files.push({file: file, thumbnail: objectUrl})
+          this.files.push({file: file, thumbnail: await pdfService.generateThumbnailObjectUrl(file)})
           success.push(file.name)
         } else {
           errors.push(file.name)
@@ -106,8 +103,18 @@ export default {
   }
 }
 
+.files {
+  display: flex;
+}
+
 .file {
-  background-color: $color-yellow;
+  height: 35rem;
+  width: 16rem;
+}
+
+.file-thumbnail {
+  height: 30rem;
+  width: 15rem;
 }
 
 </style>
