@@ -37,10 +37,6 @@ class Article(models.Model):
         return self.content
 
     @property
-    def snippet(self):
-        return self.subtitle
-
-    @property
     def like_count(self) -> int:
         return self.article_like.count()
 
@@ -69,7 +65,6 @@ class Category(models.Model):
 
 class Like(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(get_user_model(), related_name='user_like', on_delete=models.CASCADE)
     article = models.ForeignKey('Article', related_name='article_like', on_delete=models.CASCADE)
 
