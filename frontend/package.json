@@ -10,6 +10,7 @@
   "dependencies": {
     "@apollo/client": "^3.5.8",
     "@vue/apollo-option": "^4.0.0-alpha.16",
+    "@vueup/vue-quill": "^1.0.0-beta.7",
     "class-transformer": "^0.5.1",
     "core-js": "^3.6.5",
     "graphql": "^16.3.0",

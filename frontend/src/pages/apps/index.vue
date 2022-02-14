@@ -8,11 +8,9 @@
 </template>
 
 <script>
-import NavLink from "@/components/shared/NavLink";
 
 export default {
   name: "index",
-  components: {NavLink}
 }
 </script>
 

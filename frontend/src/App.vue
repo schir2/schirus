@@ -8,12 +8,9 @@
   </main>
 </template>
 <script>
-import TheNavbar from "@/components/shared/TheNavbar";
-import TheHeader from "@/components/shared/TheHeader";
 
 export default {
   name: "App",
-  components: {TheHeader, TheNavbar},
 }
 </script>
 <style>
