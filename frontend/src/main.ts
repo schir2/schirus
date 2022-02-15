@@ -7,7 +7,7 @@ import VueToast from 'vue-toast-notification';
 
 import {createApolloProvider} from '@vue/apollo-option'
 import {ApolloClient, InMemoryCache} from '@apollo/client/core'
-const typeDefs = require("@/schema.ts")
+const typeDefs = require("@/services/apollo/schema.ts")
 
 import {QuillEditor} from "@vueup/vue-quill";
 import AuthSmall from "@/components/shared/AuthSmall.vue";

@@ -8,6 +8,7 @@
 <script>
 export default {
   name: "ArticleForm",
+  props: ["article"],
   computed: {}
 }
 </script>

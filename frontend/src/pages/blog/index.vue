@@ -1,18 +1,23 @@
 <template>
   <div>
     <router-link :to="{name:'articleAdd'}">Add</router-link>
-    <router-view></router-view>
+    <ArticleList></ArticleList>
   </div>
 </template>
 
 <script>
+import ArticleList from "@/components/blog/ArticleList";
+import {mapState} from "vuex";
+
 export default {
   name: "ArticleIndex",
-  data() {
-    return {
-      articles: []
-    }
-  },
+  components: {ArticleList},
+  computed: mapState({
+    articles: state => state.blog.articles
+  }),
+  async mounted() {
+    await this.$store.dispatch('blog/getListTop')
+  }
 }
 </script>
 
