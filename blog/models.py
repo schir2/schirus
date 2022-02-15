@@ -1,7 +1,8 @@
-from django.db import models
 from os import path
+
 from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.db import models
 from django.utils.text import slugify
 
 
@@ -16,13 +17,12 @@ def get_media_upload_path(instance, filename):
 
 
 class Article(models.Model):
-
     slug = models.SlugField(default="", editable=False, max_length=60)
     title = models.CharField(max_length=60)
     content = models.TextField()
     user = models.ForeignKey(get_user_model(), related_name='user', on_delete=models.CASCADE)
-    categories = models.ManyToManyField('Category', related_name='categories', blank=True)
-    likes = models.ManyToManyField(get_user_model(), through='Like', related_name='likes', blank=True)
+    categories = models.ManyToManyField('Category', related_name='articles', blank=True)
+    likes = models.ManyToManyField(get_user_model(), through='Like', related_name='articles', blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
 
@@ -31,14 +31,6 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
-
-    def convert_content_to_image(self):
-        # TODO Implement this method
-        return self.content
-
-    @property
-    def like_count(self) -> int:
-        return self.article_like.count()
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -65,8 +57,8 @@ class Category(models.Model):
 
 class Like(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(get_user_model(), related_name='user_like', on_delete=models.CASCADE)
-    article = models.ForeignKey('Article', related_name='article_like', on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    article = models.ForeignKey('Article', on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.user} liked {self.article}'

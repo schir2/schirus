@@ -18,6 +18,11 @@ export const GET_ARTICLE_LIST = gql`
                 user {id, username}
                 createdOn
             }
+            user {
+                username,
+                firstName,
+                lastName
+            }
         }
     }
 `

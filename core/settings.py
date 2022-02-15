@@ -136,6 +136,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 GRAPHENE = {
     "SCHEMA": "api.schema.schema",
+    'SCHEMA_OUTPUT': 'fixtures/schema.json',  # defaults to schema.json,
+    'SCHEMA_INDENT': 2,
     'MIDDLEWARE': [
         "graphql_jwt.middleware.JSONWebTokenMiddleware",
     ],

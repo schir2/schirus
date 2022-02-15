@@ -35,7 +35,7 @@ const authService = {
                 password: password
             }
         })
-        if (response?.data?.tokenAuth?.success) {
+        if (response.data) {
             const authUser = plainToClass(AuthUser, {
                     username: username,
                     loggedIn: true,

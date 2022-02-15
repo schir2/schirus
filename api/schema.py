@@ -1,7 +1,8 @@
 import graphene
-from graphene import relay, ObjectType
+from django.contrib.auth import get_user_model
+from graphene import ObjectType
+from graphene_django import DjangoListField
 from graphene_django import DjangoObjectType
-from graphene_django.filter import DjangoFilterConnectionField
 from graphql_auth import mutations
 from graphql_auth.schema import UserQuery, MeQuery
 
@@ -30,33 +31,39 @@ class AuthMutation(graphene.ObjectType):
     revoke_token = mutations.RevokeToken.Field()
 
 
-class CategoryNode(DjangoObjectType):
+class CategoryType(DjangoObjectType):
     class Meta:
         model = Category
-        filter_fields = ('id', 'name', 'slug')
-        interfaces = (relay.Node,)
+        fields = ('id', 'name', 'slug')
 
 
-class ArticleNode(DjangoObjectType):
-    class Meta:
-        model = Article
-        filter_fields = ('id', 'slug', 'title', 'content', 'user', 'categories', 'likes', 'created_on', 'updated_on')
-        interfaces = (relay.Node,)
-
-
-class LikeNode(DjangoObjectType):
+class LikeType(DjangoObjectType):
     class Meta:
         model = Like
-        filter_fields = ('id', 'user', 'article', 'created_on')
-        interfaces = (relay.Node,)
+        fields = ('id', 'user', 'article', 'created_on')
+
+
+class UserType(DjangoObjectType):
+    class Meta:
+        model = get_user_model()
+        fields = (
+            'id', 'username', 'first_name', 'last_name', 'email', 'is_active', 'is_staff', 'is_superuser',
+            'groups')
+
+
+class ArticleType(DjangoObjectType):
+    user = UserType
+    likes = DjangoListField(LikeType)
+
+    class Meta:
+        model = Article
+        fields = ('id', 'slug', 'title', 'content', 'user', 'likes', 'categories', 'created_on', 'updated_on')
 
 
 class Query(UserQuery, MeQuery, ObjectType):
-    category = relay.Node.Field(CategoryNode)
-    categories = DjangoFilterConnectionField(CategoryNode)
-
-    article = relay.Node.Field(ArticleNode)
-    articles = DjangoFilterConnectionField(ArticleNode)
+    categories = DjangoListField(CategoryType)
+    articles = DjangoListField(ArticleType)
+    users = DjangoListField(UserType)
 
 
 class Mutation(AuthMutation, ObjectType):

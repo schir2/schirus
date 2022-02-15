@@ -15,13 +15,13 @@ import NavLink from "@/components/shared/NavLink.vue";
 import TheHeader from "@/components/shared/TheHeader.vue";
 import TheNavbar from "@/components/shared/TheNavbar.vue";
 import VCard from "@/components/shared/VCard.vue"
-
 // CSS Imports
 import "normalize.css"
 import '@/scss/style.scss'
 import 'vue-toast-notification/dist/theme-sugar.css';
 import 'material-icons/iconfont/material-icons.css';
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
+
 
 const cache = new InMemoryCache()
 

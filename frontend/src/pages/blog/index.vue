@@ -1,7 +1,8 @@
 <template>
   <div>
     <router-link :to="{name:'articleAdd'}">Add</router-link>
-    <ArticleList></ArticleList>
+
+    <ArticleList :articles="articles"></ArticleList>
   </div>
 </template>
 

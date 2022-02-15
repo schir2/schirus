@@ -12,14 +12,13 @@ export class BlogState {
 const actions = <ActionTree<BlogState, any>>{
 
     async getListTop({commit}) {
-        console.log("pre query")
         return apolloClient.query(
             {
                 query: GET_ARTICLE_LIST
             }
         ).then(response => {
-            console.log(response)
-            commit("getList", response)
+            if (response?.data?.articles)
+            commit("getList", response.data.articles)
         })
 
     },
