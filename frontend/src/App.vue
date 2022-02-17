@@ -1,45 +1,21 @@
 <template>
-  <main class="main">
+  <div>
     <TheNavbar></TheNavbar>
-    <TheHeader></TheHeader>
     <div class="content">
+      <TheHeader></TheHeader>
       <router-view/>
     </div>
-  </main>
+  </div>
 </template>
 <script>
 
+import TheNavbar from "@/components/shared/TheNavbar";
+
 export default {
   name: "App",
+  components: {TheNavbar},
 }
 </script>
-<style>
-.main {
-  display: grid;
-  height: 100vh;
-  grid-template-areas:
-      "top-nav top-nav top-nav"
-      ". header ."
-      ". content ."
-      "footer footer footer";
-  grid-template-columns: minmax(0,1fr) minmax(700px, 1024px) minmax(0,1fr);
-  grid-template-rows: 3rem 5rem 1fr 2rem;
-}
-
-.top-nav {
-  grid-area: top-nav;
-}
-
-.header {
-  grid-area: header
-}
-
-.content {
-  grid-area: content
-}
-
-.footer {
-  grid-area: footer
-}
+<style lang="scss">
 
 </style>

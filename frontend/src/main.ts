@@ -17,6 +17,7 @@ import TheNavbar from "@/components/shared/TheNavbar.vue";
 import VCard from "@/components/shared/VCard.vue"
 // CSS Imports
 import "normalize.css"
+import "animate.css"
 import '@/scss/style.scss'
 import 'vue-toast-notification/dist/theme-sugar.css';
 import 'material-icons/iconfont/material-icons.css';
