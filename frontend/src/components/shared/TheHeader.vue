@@ -13,6 +13,6 @@ export default {
 <style scoped>
 .header {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 </style>

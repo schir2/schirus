@@ -69,7 +69,7 @@ export default {
   align-items: center;
   justify-content: center;
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .logo {
@@ -105,7 +105,7 @@ export default {
 
 }
 
-@media (max-width: 35em) {
+@media (max-width: 35rem) {
   .top-nav {
     z-index: 100;
     position: sticky;

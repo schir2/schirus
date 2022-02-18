@@ -22,12 +22,24 @@ export default {
   display: flex;
   flex-direction: column;
   gap: .5rem;
+  transition: all 1s ease;
+
+  @media (max-width: 35rem) {
+    margin: 0;
+  }
 }
-.heading{
+
+.heading {
   border-bottom: 1px solid $color-light-gray;
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+
+  @media (max-width: 35rem) {
+    flex-direction: column;
+    gap: 1rem;
+
+  }
 }
 
 </style>

@@ -1,7 +1,8 @@
 <template>
   <div v-if="article">
     <TheHeader><h1>{{ article.title }}</h1></TheHeader>
-    <h2 v-if="article.user">Written by {{ article.user.username }}</h2>
+    <ul class="categories"><VBadge v-for="category in article.categories" :key="category.id" :category="category">{{category.name}}</VBadge></ul>
+    <span v-if="article.user">Written by <span class="author">{{ article.user.username }}</span></span>
     <article v-if="article.content" v-html="article.content">
     </article>
 
@@ -24,6 +25,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.categories{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .25rem;
+  margin-bottom:1.5rem;
+
+}
+.author{
+  font-weight: bold;
+}
+
 
 </style>

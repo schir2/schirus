@@ -19,7 +19,11 @@ export default {
 .content{
   max-width: 70rem;
   margin:0 auto;
-  padding: .5rem;
+  padding: 0 2rem;
+
+  @media (max-width: 35rem) {
+    padding: 0 .5rem;
+  }
 }
 
 </style>

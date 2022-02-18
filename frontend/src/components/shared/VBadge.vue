@@ -11,8 +11,9 @@ export default {
 <style scoped lang="scss">
 .badge {
   color: $color-light;
-  background-color: $color-blue;
-  padding: .25rem;
+  background-color: $color-red;
+  padding: .25rem .5rem;
+  margin-inline: .1rem;
 }
 
 </style>

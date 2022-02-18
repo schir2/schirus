@@ -1,5 +1,5 @@
 <template>
-  <div>Pasta</div>
+  <TheHeader><h1>Home</h1></TheHeader>
 
 </template>
 
