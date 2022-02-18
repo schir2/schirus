@@ -63,7 +63,11 @@ class ArticleType(DjangoObjectType):
 class Query(UserQuery, MeQuery, ObjectType):
     categories = DjangoListField(CategoryType)
     articles = DjangoListField(ArticleType)
+    article = graphene.Field(ArticleType, id=graphene.String())
     users = DjangoListField(UserType)
+
+    def resolve_article(self, info, id):
+        return Article.objects.get(pk=id)
 
 
 class Mutation(AuthMutation, ObjectType):
