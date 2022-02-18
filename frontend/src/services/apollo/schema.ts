@@ -59,5 +59,6 @@ type Mutation {
 
 type Query {
     articles: [Article]
+    article(id: String):Article
 }
 `
