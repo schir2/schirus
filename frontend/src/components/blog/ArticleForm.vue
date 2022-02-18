@@ -1,15 +1,22 @@
 <template>
   <form>
-    <QuillEditor v-model="article.text" theme="snow"/>
+    <h1>{{article.title ? article.title : 'Enter Article Title'}}</h1>
+    <input v-model="article.title">
+    <QuillEditor v-model="article.content" theme="snow"/>
   </form>
 
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
   name: "ArticleForm",
-  props: ["article"],
-  computed: {}
+  computed: {
+    ...mapState({
+      article: state => state.blog.article
+    })
+  }
 }
 </script>
 

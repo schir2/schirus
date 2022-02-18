@@ -1,5 +1,6 @@
 <template>
   <div>
+    <VLink :to="{name:'article-add'}">Add Article</VLink>
     <ArticleList :articles="articles"></ArticleList>
   </div>
 </template>
