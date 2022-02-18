@@ -2,7 +2,6 @@
   <div>
     <PrimaryNav></PrimaryNav>
     <div class="content">
-      <TheHeader></TheHeader>
       <router-view/>
     </div>
   </div>
@@ -17,5 +16,10 @@ export default {
 }
 </script>
 <style lang="scss">
+.content{
+  max-width: 70rem;
+  margin:0 auto;
+  padding: .5rem;
+}
 
 </style>
