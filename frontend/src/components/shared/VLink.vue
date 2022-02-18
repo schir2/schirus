@@ -1,11 +1,12 @@
 <template>
-  <a class="link"><slot></slot></a>
+  <router-link :to="to" class="link"><slot></slot></router-link>
 
 </template>
 
 <script>
 export default {
-  name: "VLink"
+  name: "VLink",
+  props: ["to"]
 }
 </script>
 

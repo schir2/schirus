@@ -8,6 +8,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.badge {
+  color: $color-light;
+  background-color: $color-blue;
+  padding: .25rem;
+}
 
 </style>

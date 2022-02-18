@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <h1 v-if="$route.meta.title">{{ $route.meta.title }}</h1>
+    <slot></slot>
   </header>
 </template>
 
@@ -13,5 +13,6 @@ export default {
 <style scoped>
 .header {
   text-align: center;
+  margin-bottom: 1rem;
 }
 </style>
