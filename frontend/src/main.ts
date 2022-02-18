@@ -13,7 +13,7 @@ import {QuillEditor} from "@vueup/vue-quill";
 import AuthSmall from "@/components/shared/AuthSmall.vue";
 import NavLink from "@/components/shared/NavLink.vue";
 import TheHeader from "@/components/shared/TheHeader.vue";
-import TheNavbar from "@/components/shared/TheNavbar.vue";
+import PrimaryNav from "@/components/shared/PrimaryNav.vue";
 import VCard from "@/components/shared/VCard.vue"
 // CSS Imports
 import "normalize.css"
@@ -42,7 +42,7 @@ app.component('QuillEditor', QuillEditor)
 app.component('AuthSmall', AuthSmall)
 app.component('NavLink', NavLink)
 app.component('TheHeader', TheHeader)
-app.component('TheNavbar', TheNavbar)
+app.component('PrimaryNav', PrimaryNav)
 app.component('VCard', VCard)
 
 app.use(router)

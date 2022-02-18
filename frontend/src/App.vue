@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TheNavbar></TheNavbar>
+    <PrimaryNav></PrimaryNav>
     <div class="content">
       <TheHeader></TheHeader>
       <router-view/>
@@ -9,11 +9,11 @@
 </template>
 <script>
 
-import TheNavbar from "@/components/shared/TheNavbar";
+import PrimaryNav from "@/components/shared/PrimaryNav";
 
 export default {
   name: "App",
-  components: {TheNavbar},
+  components: {PrimaryNav},
 }
 </script>
 <style lang="scss">

@@ -1,12 +1,11 @@
 <template>
-  <div class="card">
-    <slot></slot>
-  </div>
+  <a class="link"><slot></slot></a>
+
 </template>
 
 <script>
 export default {
-  name: "VCard"
+  name: "VLink"
 }
 </script>
 

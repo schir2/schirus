@@ -1,12 +1,10 @@
 <template>
-  <div class="card">
-    <slot></slot>
-  </div>
+<button class="button"><slot></slot></button>
 </template>
 
 <script>
 export default {
-  name: "VCard"
+  name: "VButton"
 }
 </script>
 
