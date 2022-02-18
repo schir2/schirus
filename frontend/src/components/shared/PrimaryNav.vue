@@ -63,11 +63,13 @@ export default {
 <style lang="scss">
 
 .top-nav {
+  background-color: $color-light-gray;
   padding: 1rem;
   gap: 1rem;
   align-items: center;
   justify-content: center;
   display: flex;
+  margin-bottom: 1rem;
 }
 
 .logo {
@@ -78,6 +80,7 @@ export default {
 .menu {
   display: flex;
   align-items: center;
+  background-color: $color-light-gray;
 }
 
 .toggle {
@@ -128,7 +131,6 @@ export default {
     height: 100vh;
     min-width: 50%;
     margin: 0;
-    background-color: $color-light;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
 
