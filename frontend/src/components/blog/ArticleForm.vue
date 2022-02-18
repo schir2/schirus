@@ -3,6 +3,7 @@
     <h1>{{article.title ? article.title : 'Enter Article Title'}}</h1>
     <input v-model="article.title">
     <QuillEditor v-model="article.content" theme="snow"/>
+    <VButton @click.prevent="save">Save</VButton>
   </form>
 
 </template>
@@ -16,6 +17,11 @@ export default {
     ...mapState({
       article: state => state.blog.article
     })
+  },
+  methods:{
+    save(){
+      console.log("Saving Article")
+    }
   }
 }
 </script>
