@@ -1,41 +1,62 @@
 <template>
-  <ul class="article-list-item">
-    <li class="title">{{article.title}}</li>
-    <li class="user">{{article.user.username}}</li>
-    <li class="likes">{{article.likes.length}}</li>
-    <li class="created-on">{{article.createdOn}}</li>
-    <li class="categories">
-      <span class="category" v-for="category in article.categories" :key="category.id">
-        {{category.name}}
+  <VCardSmall class="article-list-item">
+    <template #heading>
+      <VLink :to="{name:'article-detail', params: {id: article.id}}"><h2 class="title">{{ article.title }}</h2></VLink>
+      <div class="categories">
+        <VBadge v-for="category in article.categories" :key="category.id">
+          {{ category.name }}
+        </VBadge>
+      </div>
+    </template>
+
+    <div class="content">
+      <div class="authored">by:<span class="author">{{ article.user.username }}</span> {{ createdOn }}</div>
+      <span class="likes">
+        <span>{{ article.likes.length }}</span>
+        <i class="material-icons">favorite</i>
       </span>
-    </li>
-    <li class="actions"></li>
-  </ul>
+    </div>
+  </VCardSmall>
 
 </template>
 
 <script>
+import {formatDate} from "@/helpers";
+
 export default {
   name: "ArticleListItem",
-  props: ["article"]
+  props: ["article"],
+  computed: {
+    createdOn() {
+      return formatDate(this.article.createdOn)
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
-.article-list-item{
-  display: grid;
-  grid-template-areas:
-      "title title title actions"
-      "categories categories categories actions"
-      "user created-on likes actions"
-;
-  background-color: red;
+.authored {
+  display: flex;
+  gap: 1ch;
 }
-.title{grid-area:title}
-.user{grid-area:user}
-.likes{grid-area:likes}
-.created-on{grid-area:created-on}
-.categories{grid-area:categories}
-.actions{grid-area:actions}
+
+.author {
+  font-weight: bold;
+}
+
+.content {
+  display: flex;
+  padding: .5rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.likes{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1ch;
+}
 
 </style>
