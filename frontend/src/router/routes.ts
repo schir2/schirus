@@ -21,6 +21,7 @@ const routes = [
     {
         path: '/blog',
         name: 'blog',
+        redirect: {name: 'article-list'},
         meta: {
             title: "Blog",
             auth: false,
@@ -29,7 +30,7 @@ const routes = [
         children: [
             {
                 path: 'articles',
-                name: 'articleList',
+                name: 'article-list',
                 meta: {
                     title: 'Articles',
                     auth: false,
@@ -37,22 +38,23 @@ const routes = [
                 component: () => import(/* webpackChunkName: "articles" */ "@/pages/blog/ArticleListPage.vue")
             },
             {
-                path: 'articles/$id',
-                name: 'articleDetail',
+                path: 'articles/:id',
+                name: 'article-detail',
                 meta: {
                     title: 'Articles',
                     auth: false,
                 },
-                component: () => import(/* webpackChunkName: "articleDetail" */ "@/pages/blog/ArticleDetailPage.vue")
+                component: () => import(/* webpackChunkName: "article-detail" */ "@/pages/blog/ArticleDetailPage.vue")
             },
             {
                 path: 'articles/add',
-                name: 'articleAdd',
+                name: 'article-add',
                 meta: {
                     title: 'Add Article',
                     auth: true,
                 },
-                component: () => import(/* webpackChunkName: "articleAdd" */ "@/pages/blog/ArticleAddPage.vue")}
+                component: () => import(/* webpackChunkName: "article-add" */ "@/pages/blog/ArticleAddPage.vue")
+            }
 
         ]
     },
@@ -63,7 +65,7 @@ const routes = [
             title: "Apps",
             auth: false,
         },
-        component: () => import(/* webpackChunkName: "blog" */ "@/pages/apps/index.vue"),
+        component: () => import(/* webpackChunkName: "apps" */ "@/pages/apps/index.vue"),
         children: [
             {
                 path: 'pdf-merge',
@@ -72,7 +74,7 @@ const routes = [
                     title: "PDF Merge",
                     auth: false,
                 },
-                component: () => import(/* webpackChunkName: "blog" */ "@/pages/apps/PDFMerge.vue"),
+                component: () => import(/* webpackChunkName: "pdf-merge" */ "@/pages/apps/PDFMerge.vue"),
             }
         ]
 
@@ -85,7 +87,7 @@ const routes = [
             title: "About",
             auth: false,
         },
-        component: () => import(/* webpackChunkName: "blog" */ "@/pages/About.vue")
+        component: () => import(/* webpackChunkName: "about" */ "@/pages/About.vue")
     }
 ]
 
