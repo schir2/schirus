@@ -1,7 +1,14 @@
 <template>
   <div>
     <VLink :to="{name:'article-add'}">Add Article</VLink>
-    <ArticleList :articles="articles"></ArticleList>
+    <Suspense>
+      <template #default>
+        <ArticleList :articles="articles"></ArticleList>
+      </template>
+      <template #fallback>
+        <div>Loading</div>
+      </template>
+    </Suspense>
   </div>
 </template>
 

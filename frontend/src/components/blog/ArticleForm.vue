@@ -9,14 +9,12 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
+import Article from "@/models/Article";
 
 export default {
   name: "ArticleForm",
+  props: {article: Article},
   computed: {
-    ...mapState({
-      article: state => state.blog.article
-    })
   },
   methods:{
     save(){
