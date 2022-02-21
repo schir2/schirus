@@ -2,6 +2,7 @@ import App from "@/App.vue"
 import {createApp} from "vue"
 import 'reflect-metadata'
 import router from '@/router'
+import {createPinia} from "pinia"
 import VueToast from 'vue-toast-notification'
 
 import {createApolloProvider} from '@vue/apollo-option'
@@ -39,7 +40,7 @@ const apolloProvider = createApolloProvider({
     defaultClient: apolloClient,
 })
 
-const app = createApp(App)
+const app = createApp(App).use(createPinia()).use(createPinia())
 
 app.component('QuillEditor', QuillEditor)
 app.component('AuthSmall', AuthSmall)
@@ -51,6 +52,9 @@ app.component('VLink', VLink)
 app.component('VButton', VButton)
 app.component('VBadge', VBadge)
 
+const pinia = createPinia()
+
+app.use(pinia)
 app.use(router)
 app.use(apolloProvider)
 app.use(VueToast)

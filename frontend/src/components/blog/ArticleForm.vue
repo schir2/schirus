@@ -13,11 +13,11 @@
 </template>
 
 <script setup>
-import {useStore} from "vuex";
 import {computed} from "vue";
+import {useBlogStore} from "@/store/BlogStore";
+const blogStore = useBlogStore
 
-const store = useStore()
-const article = computed(() => store.state.blog.article)
+const article = computed(() => blogStore.article)
 
 </script>
 

@@ -1,13 +1,14 @@
-<script setup>
+<script setup type="ts">
 import {computed, onMounted} from "vue"
-import {useStore} from "vuex"
 import ArticleList from "@/components/blog/ArticleList.vue";
+import {useBlogStore} from "@/store/BlogStore";
 
-const store = useStore()
+const blogStore = useBlogStore()
+
 onMounted(async () => {
-  await store.dispatch('blog/getArticlesTop')
+  await blogStore.getArticlesTop()
 })
-const articles = computed(() => store.state.blog.articles)
+const articles = computed(() => blogStore.articles)
 
 </script>
 <template>

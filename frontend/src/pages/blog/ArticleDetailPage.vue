@@ -19,17 +19,18 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
+import {useBlogStore} from "@/store/BlogStore";
+const blogStore = useBlogStore()
 
 export default {
   name: "ArticleDetailPage",
   computed: {
-    ...mapState({
-      article: state => state.blog.article
-    })
+    article(){
+      return blogStore.article
+    }
   },
   mounted() {
-    this.$store.dispatch("blog/getArticle", this.$route.params.id)
+    blogStore.getArticle(this.$route.params.id)
   }
 }
 </script>

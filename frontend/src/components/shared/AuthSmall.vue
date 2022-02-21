@@ -1,59 +1,44 @@
 <template>
-  <form
-    v-if="!auth.authUser?.loggedIn"
-    class="auth-small"
-  >
+  <form v-if="!authUser?.loggedIn" class="auth-small">
     <input
-      v-model="username"
-      type="text"
+        v-model="username"
+        type="text"
     >
     <input
-      v-model="password"
-      type="password"
+        v-model="password"
+        type="password"
     >
     <button
-      type="submit"
-      @click.prevent="login"
-      @keyup.enter="login"
+        type="submit"
+        @click.prevent="login"
+        @keyup.enter="login"
     >
       Login
     </button>
   </form>
   <form v-else>
-    <a>{{ auth.authUser.username }}</a>
+    <a>{{ authUser.username }}</a>
     <button @click="logout">
       Logout
     </button>
   </form>
 </template>
 
-<script>
-import {mapGetters, mapState} from "vuex";
+<script setup>
+import {computed} from "vue";
+import {useAuthStore} from "@/store/AuthStore";
 
-export default {
-  name: "AuthSmall",
-  data() {
-    return {
-      username: "",
-      password: ""
-    }
-  },
-  computed: {
-    ...mapState({
-      auth: state => state.auth
-    }),
-    ...mapGetters([
-      'auth/isLoggedIn',
-    ])
-  },
-  methods: {
-    login() {
-      this.$store.dispatch('auth/login', {username: this.username, password: this.password})
-    },
-    logout() {
-      this.$store.dispatch('auth/logout')
-    }
-  }
+const authStore = useAuthStore()
+const authUser = computed(() => {
+  return authStore.authUser
+})
+
+function login() {
+  authStore.login({username: this.username, password: this.password})
+}
+
+function logout() {
+  authStore.logout()
 }
 </script>
 
