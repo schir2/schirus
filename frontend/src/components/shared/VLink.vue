@@ -1,6 +1,10 @@
 <template>
-  <router-link :to="to" class="link"><slot></slot></router-link>
-
+  <router-link
+    :to="to"
+    class="link"
+  >
+    <slot />
+  </router-link>
 </template>
 
 <script>

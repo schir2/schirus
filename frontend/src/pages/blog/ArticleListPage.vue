@@ -1,32 +1,22 @@
+<script setup>
+import {computed, onMounted} from "vue"
+import {useStore} from "vuex"
+import ArticleList from "@/components/blog/ArticleList.vue";
+
+const store = useStore()
+onMounted(async () => {
+  await store.dispatch('blog/getArticlesTop')
+})
+const articles = computed(() => store.state.blog.articles)
+
+</script>
 <template>
   <div>
-    <VLink :to="{name:'article-add'}">Add Article</VLink>
-    <Suspense>
-      <template #default>
-        <ArticleList :articles="articles"></ArticleList>
-      </template>
-      <template #fallback>
-        <div>Loading</div>
-      </template>
-    </Suspense>
+    <VLink :to="{name:'article-add'}">
+      Add Article
+    </VLink>
+
+    <ArticleList :articles="articles"/>
+
   </div>
 </template>
-
-<script>
-import ArticleList from "@/components/blog/ArticleList";
-import {mapState} from "vuex";
-
-export default {
-  name: "ArticleListPage",
-  components: {ArticleList},
-  computed: {
-    ...mapState({
-      articles: state => state.blog.articles
-    })
-  },
-}
-</script>
-
-<style scoped>
-
-</style>

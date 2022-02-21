@@ -3,7 +3,7 @@ import AuthStorage from "@/storage/auth/types";
 import {plainToClass} from "class-transformer"
 
 class LocalAuthStorage implements AuthStorage{
-    storageObjectName: string = 'authUser'
+    storageObjectName = 'authUser'
 
     getAuthUser() :AuthUser {
         const data = localStorage.getItem(this.storageObjectName)

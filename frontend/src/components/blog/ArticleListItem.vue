@@ -1,23 +1,31 @@
 <template>
   <VCardSmall class="article-list-item">
     <template #heading>
-      <VLink :to="{name:'article-detail', params: {id: article.id}}"><h2 class="title">{{ article.title }}</h2></VLink>
+      <VLink :to="{name:'article-detail', params: {id: article.id}}">
+        <h2 class="title">
+          {{ article.title }}
+        </h2>
+      </VLink>
       <div class="categories">
-        <VBadge v-for="category in article.categories" :key="category.id">
+        <VBadge
+          v-for="category in article.categories"
+          :key="category.id"
+        >
           {{ category.name }}
         </VBadge>
       </div>
     </template>
 
     <div class="content">
-      <div class="authored">by:<span class="author">{{ article.user.username }}</span> {{ createdOn }}</div>
+      <div class="authored">
+        by:<span class="author">{{ article.user.username }}</span> {{ createdOn }}
+      </div>
       <span class="likes">
         <span>{{ article.likes.length }}</span>
         <i class="material-icons">favorite</i>
       </span>
     </div>
   </VCardSmall>
-
 </template>
 
 <script>

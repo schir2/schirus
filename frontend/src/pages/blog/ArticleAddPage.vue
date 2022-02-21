@@ -1,5 +1,5 @@
 <template>
-  <ArticleForm></ArticleForm>
+  <ArticleForm />
 </template>
 
 <script>

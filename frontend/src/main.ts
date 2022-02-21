@@ -2,7 +2,6 @@ import App from "@/App.vue"
 import {createApp} from "vue"
 import 'reflect-metadata'
 import router from '@/router'
-import store from "@/store"
 import VueToast from 'vue-toast-notification'
 
 import {createApolloProvider} from '@vue/apollo-option'
@@ -25,7 +24,7 @@ import 'vue-toast-notification/dist/theme-sugar.css'
 import 'material-icons/iconfont/material-icons.css'
 import '@vueup/vue-quill/dist/vue-quill.snow.css'
 
-const typeDefs = require("@/services/apollo/schema.ts")
+import {typeDefs} from "@/services/apollo/schema";
 
 
 const cache = new InMemoryCache()
@@ -53,7 +52,6 @@ app.component('VButton', VButton)
 app.component('VBadge', VBadge)
 
 app.use(router)
-app.use(store)
 app.use(apolloProvider)
 app.use(VueToast)
 app.mount("#app")

@@ -1,9 +1,9 @@
 <template>
   <div class="card">
     <div class="heading">
-      <slot name="heading"></slot>
+      <slot name="heading" />
     </div>
-    <slot></slot>
+    <slot />
   </div>
 </template>
 

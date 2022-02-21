@@ -13,7 +13,7 @@ export const pdfService = {
         return await newDocument.save();
     },
 
-    async copy(file: File, single: boolean = false) {
+    async copy(file: File, single = false) {
         const newDocument = await PDFDocument.create()
         const document = await PDFDocument.load(await file.arrayBuffer())
         const indexesToCopy = single ? [0] : document.getPageIndices()

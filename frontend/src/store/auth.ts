@@ -29,8 +29,6 @@ const actions = <ActionTree<AuthState, any>>{
         authService.logout()
         commit('logout')
     },
-    setAccessToken({commit}, accessToken) {
-    },
 }
 const getters = <GetterTree<AuthState, any>>{
     isLoggedIn: (state: AuthState) => {

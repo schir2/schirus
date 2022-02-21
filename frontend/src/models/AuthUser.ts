@@ -1,6 +1,6 @@
 export class AuthUser {
-    username: string = 'anonymous'
-    loggedIn: boolean = false
-    token: string = ''
-    refreshToken: string = ''
+    username = 'anonymous'
+    loggedIn = false
+    token = ''
+    refreshToken = ''
 }

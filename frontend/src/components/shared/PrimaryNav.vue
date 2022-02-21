@@ -1,33 +1,63 @@
 <template>
   <nav class="top-nav">
-    <img class="logo" src="@/assets/logo.gif">
+    <img
+      class="logo"
+      src="@/assets/logo.gif"
+    >
     <Transition>
-      <menu class="menu" v-show="!mobile || menuVisible">
-        <ul class="links" id="links">
+      <menu
+        v-show="!mobile || menuVisible"
+        class="menu"
+      >
+        <ul
+          id="links"
+          class="links"
+        >
           <li class="link">
-            <NavLink :to="{name:'home'}">Home</NavLink>
+            <NavLink :to="{name:'home'}">
+              Home
+            </NavLink>
           </li>
           <li class="link">
-            <NavLink :to="{name:'blog'}">Blog</NavLink>
+            <NavLink :to="{name:'blog'}">
+              Blog
+            </NavLink>
           </li>
           <li class="link">
-            <NavLink :to="{name:'apps'}">Apps</NavLink>
+            <NavLink :to="{name:'apps'}">
+              Apps
+            </NavLink>
           </li>
           <li class="link">
-            <NavLink :to="{name:'about'}">About</NavLink>
+            <NavLink :to="{name:'about'}">
+              About
+            </NavLink>
           </li>
         </ul>
-        <AuthSmall></AuthSmall>
+        <AuthSmall />
       </menu>
     </Transition>
-    <Transition name="toggle"
-                mode="out-in"
-                enter-active-class="animate__animated animate__bounceIn"
+    <Transition
+      name="toggle"
+      mode="out-in"
+      enter-active-class="animate__animated animate__bounceIn"
     >
-      <a v-if="!menuVisible" @click="menuVisible = !menuVisible" key="1" class="toggle"><span
-          class="material-icons">menu</span></a>
-      <a v-else @click="menuVisible = !menuVisible" key="2" class="toggle"><span
-          class="material-icons">close</span></a>
+      <a
+        v-if="!menuVisible"
+        key="1"
+        class="toggle"
+        @click="menuVisible = !menuVisible"
+      ><span
+        class="material-icons"
+      >menu</span></a>
+      <a
+        v-else
+        key="2"
+        class="toggle"
+        @click="menuVisible = !menuVisible"
+      ><span
+        class="material-icons"
+      >close</span></a>
     </Transition>
   </nav>
 </template>
@@ -38,18 +68,18 @@ import NavLink from "@/components/shared/NavLink";
 
 export default {
   name: "PrimaryNav",
+  components: {NavLink, AuthSmall},
   data() {
     return {
       menuVisible: false,
       mobile: true
     }
   },
-  components: {NavLink, AuthSmall},
   mounted() {
     this.onResize()
     window.addEventListener('resize', this.onResize, {passive: true})
   },
-  destroyed() {
+  unmounted() {
     window.removeEventListener('resize', this.onResize)
   },
   methods: {

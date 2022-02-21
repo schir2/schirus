@@ -1,26 +1,50 @@
 <template>
-  <div @dragover.prevent @drop.prevent>
+  <div
+    @dragover.prevent
+    @drop.prevent
+  >
     <form>
       <draggable-component
-          class="files"
-          v-model="files"
-          @start="drag=true"
-          @end="drag=false"
-          item-key="id">
+        v-model="files"
+        class="files"
+        item-key="id"
+        @start="drag=true"
+        @end="drag=false"
+      >
         <template #item="{element, index}">
           <div class="file">
-            <button class="material-icons file-action" @click.prevent="removeFile(index)">delete</button>
+            <button
+              class="material-icons file-action"
+              @click.prevent="removeFile(index)"
+            >
+              delete
+            </button>
             <span class="file-heading">{{ element.file.name.substring(0, element.file.name.length-4) }}</span>
-            <iframe class="file-thumbnail" :src="element.thumbnail"></iframe>
+            <iframe
+              class="file-thumbnail"
+              :src="element.thumbnail"
+            />
           </div>
         </template>
       </draggable-component>
-      <input type="file" multiple ref="fileInput" style="display:none" @change="onUploadHandler">
-      <div @drop="onDropHandler" class="drop-zone" @click="$refs.fileInput.click()">
+      <input
+        ref="fileInput"
+        type="file"
+        multiple
+        style="display:none"
+        @change="onUploadHandler"
+      >
+      <div
+        class="drop-zone"
+        @drop="onDropHandler"
+        @click="$refs.fileInput.click()"
+      >
         <span class="material-icons icon">file_upload</span>
         <span class="display-1">Drop Your Files Here</span>
       </div>
-      <button @click.prevent="onClickMerge">Merge</button>
+      <button @click.prevent="onClickMerge">
+        Merge
+      </button>
     </form>
   </div>
 </template>

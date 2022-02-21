@@ -1,10 +1,17 @@
 <template>
   <div>
-    <input type="text" v-model="username">
-    <input type="password" v-model="password">
-    <button @click.prevent="login">Login</button>
+    <input
+      v-model="username"
+      type="text"
+    >
+    <input
+      v-model="password"
+      type="password"
+    >
+    <button @click.prevent="login">
+      Login
+    </button>
   </div>
-
 </template>
 
 <script>

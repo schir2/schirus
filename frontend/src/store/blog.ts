@@ -1,15 +1,15 @@
 import {ActionTree, GetterTree, MutationTree} from "vuex";
 import Article from "@/models/Article";
-import User from "@/models/User";
 import {apolloClient} from "@/main";
 import {GET_ARTICLE_BY_ID, GET_ARTICLE_LIST} from "@/services/apollo/queries";
+import {plainToClass} from "class-transformer";
 
 export class BlogState {
     article: Article = new Article()
     articles: Article[] = []
 }
 
-const actions = <ActionTree<BlogState, any>>{
+const actions = <ActionTree<BlogState, BlogState>>{
 
     async getArticlesTop({commit}) {
         return apolloClient.query(
@@ -17,12 +17,11 @@ const actions = <ActionTree<BlogState, any>>{
                 query: GET_ARTICLE_LIST
             }
         ).then(response => {
+            console.log(response)
             if (response?.data?.articles)
-                commit("setArticles", response.data.articles)
+                commit("setArticles", plainToClass(Article, response.data.articles))
         })
 
-    },
-    async getArticlesListByUser(state, user: User) {
     },
 
     async getArticle({commit}, id) {
@@ -33,13 +32,13 @@ const actions = <ActionTree<BlogState, any>>{
             }
         ).then(response => {
             if (response?.data?.article) {
-                commit("setArticle", response.data.article)
+                commit("setArticle", plainToClass(Article, response.data.article))
             }
         })
     }
 
 }
-const getters = <GetterTree<BlogState, any>>{
+const getters = <GetterTree<BlogState, Article>>{
     getArticle: (state: BlogState) => {
         return state.article
     }

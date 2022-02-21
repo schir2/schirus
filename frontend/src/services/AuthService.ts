@@ -16,13 +16,13 @@ const authService = {
         return this.AuthStorage.getAuthUser().refreshToken
     },
 
-    setAccessToken(access: string) {
+    setAccessToken(access: string): void {
         const authUser = this.AuthStorage.getAuthUser()
         authUser.token = access;
         this.AuthStorage.setAuthUser(authUser)
     },
 
-    async login(username: string, password: string) {
+    async login(username: string, password: string): Promise<AuthUser> {
         const response = await apolloClient.mutate({
             mutation: gql`mutation ($username: String!, $password: String!){
                 tokenAuth(username: $username, password: $password){
@@ -49,13 +49,9 @@ const authService = {
         }
         return Promise.reject(response.errors)
     },
-    async logout() {
+    logout(): void {
         this.AuthStorage.removeAuthUser()
     },
-
-    async refresh() {
-
-    }
 }
 
 export default authService
