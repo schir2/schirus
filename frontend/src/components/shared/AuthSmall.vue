@@ -12,21 +12,24 @@
   </form>
 </template>
 
-<script setup>
-import { computed } from "vue";
-import { useAuthStore } from "@/store/AuthStore";
+<script setup lang="ts">
+import { computed, ref } from "vue"
+import { useAuthStore, AuthUserInput } from "@/store/AuthStore"
 
-const authStore = useAuthStore();
+const authStore = useAuthStore()
 const authUser = computed(() => {
-  return authStore.authUser;
-});
+  return authStore.authUser
+})
+const username = ref("")
+const password = ref("")
 
-function login() {
-  authStore.login({ username: this.username, password: this.password });
+const login = () => {
+  const userInput: AuthUserInput = {username: username.value, password: password.value}
+  authStore.login(userInput)
 }
 
 function logout() {
-  authStore.logout();
+  authStore.logout()
 }
 </script>
 

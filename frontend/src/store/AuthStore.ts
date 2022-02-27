@@ -3,7 +3,7 @@ import LocalAuthStorage from "@/storage/auth/LocalAuthStorage";
 import authService from "@/services/AuthService";
 import { defineStore } from "pinia";
 
-interface UserInput {
+export interface AuthUserInput {
   username: string;
   password: string;
 }
@@ -15,7 +15,7 @@ export const useAuthStore = defineStore("AuthStore", {
     };
   },
   actions: {
-    async login(userInput: UserInput) {
+    async login(userInput: AuthUserInput) {
       try {
         this.authUser = await authService.login(
           userInput.username,

@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "Index",
+  name: "AppsPage",
 };
 </script>
 

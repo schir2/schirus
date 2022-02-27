@@ -2,7 +2,8 @@ const routes = [
   {
     path: "/",
     name: "home",
-    component: () => import(/* webpackChunkName: "home" */ "@/pages/Home.vue"),
+    component: () =>
+      import(/* webpackChunkName: "home" */ "@/pages/HomePage.vue"),
     meta: {
       title: "Home",
       auth: false,
@@ -12,7 +13,7 @@ const routes = [
     path: "/login",
     name: "login",
     component: () =>
-      import(/* webpackChunkName: "login" */ "@/pages/Login.vue"),
+      import(/* webpackChunkName: "login" */ "@/pages/LoginPage.vue"),
     meta: {
       title: "Login",
       auth: false,
@@ -99,7 +100,7 @@ const routes = [
       auth: false,
     },
     component: () =>
-      import(/* webpackChunkName: "about" */ "@/pages/About.vue"),
+      import(/* webpackChunkName: "about" */ "@/pages/AboutPage.vue"),
   },
 ];
 
