@@ -19,7 +19,7 @@ import VBadge from "@/components/shared/VBadge.vue"
 // CSS Imports
 import "normalize.css"
 import "animate.css"
-import "@/scss/style.scss"s
+import "@/scss/style.scss"
 import "vue-toast-notification/dist/theme-sugar.css"
 import "material-icons/iconfont/material-icons.css"
 import "@vueup/vue-quill/dist/vue-quill.snow.css"
