@@ -3,7 +3,6 @@ import {createApp} from "vue"
 import "reflect-metadata"
 import {createPinia} from "pinia"
 import VueToast from "vue-toast-notification"
-
 import {createApolloProvider} from "@vue/apollo-option"
 import {ApolloClient, InMemoryCache} from "@apollo/client/core"
 import {QuillEditor} from "@vueup/vue-quill"
@@ -39,12 +38,13 @@ const apolloProvider = createApolloProvider({
 })
 
 const app = createApp(App)
-const pinia = createPinia()
 
+const pinia = createPinia()
 app.use(pinia)
 
 import router from "@/router"
 
+// Components
 app.component("QuillEditor", QuillEditor)
 app.component("AuthSmall", AuthSmall)
 app.component("NavLink", NavLink)
@@ -54,6 +54,8 @@ app.component("VCardSmall", VCardSmall)
 app.component("VLink", VLink)
 app.component("VButton", VButton)
 app.component("VBadge", VBadge)
+
+
 app.use(router)
 app.use(apolloProvider)
 app.use(VueToast)
