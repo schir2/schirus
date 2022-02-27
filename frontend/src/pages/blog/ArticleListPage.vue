@@ -9,15 +9,11 @@ onMounted(async () => {
   await blogStore.getArticlesTop()
 })
 const articles = computed(() => blogStore.articles)
-
 </script>
 <template>
   <div>
-    <VLink :to="{name:'article-add'}">
-      Add Article
-    </VLink>
+    <VLink :to="{ name: 'article-add' }"> Add Article </VLink>
 
-    <ArticleList :articles="articles"/>
-
+    <ArticleList :articles="articles" />
   </div>
 </template>

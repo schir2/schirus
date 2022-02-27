@@ -1,28 +1,27 @@
 import gql from "graphql-tag";
 
 export const typeDefs = gql`
-type User {
+  type User {
     id: ID!
     username: String!
     firstName: String
     lastName: String
     likes: [Like]
-}
+  }
 
-type Category {
+  type Category {
     id: ID!
     slug: String!
     name: String!
-}
+  }
 
-type Like {
+  type Like {
     user: User!
     article: Article!
     createdOn: String!
-    
-}
+  }
 
-type Article {
+  type Article {
     id: ID!
     slug: String!
     title: String!
@@ -32,33 +31,33 @@ type Article {
     likes: [Like]
     createdOn: String!
     updatedOn: String!
-}
+  }
 
-type Error {
+  type Error {
     message: String
     locations: [ErrorLocations]
     path: [String]
-}
+  }
 
-type ErrorLocations {
+  type ErrorLocations {
     line: Int
     column: Int
-}
+  }
 
-type TokenAuthResponse {
+  type TokenAuthResponse {
     success: Boolean
     token: String
     refreshToken: String
     refreshExpiresIn: Int
     errors: [String]
-}
+  }
 
-type Mutation {
+  type Mutation {
     tokenAuth(username: String!, password: String!): TokenAuthResponse
-}
+  }
 
-type Query {
+  type Query {
     articles: [Article]
-    article(id: String):Article
-}
-`
+    article(id: String): Article
+  }
+`;

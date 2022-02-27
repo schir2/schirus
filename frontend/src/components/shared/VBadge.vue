@@ -4,16 +4,15 @@
 
 <script>
 export default {
-  name: "VBadge"
-}
+  name: "VBadge",
+};
 </script>
 
 <style scoped lang="scss">
 .badge {
   color: $color-light;
   background-color: $color-red;
-  padding: .25rem .5rem;
-  margin-inline: .1rem;
+  padding: 0.25rem 0.5rem;
+  margin-inline: 0.1rem;
 }
-
 </style>

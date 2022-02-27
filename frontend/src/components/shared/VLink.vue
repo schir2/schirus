@@ -1,8 +1,5 @@
 <template>
-  <router-link
-    :to="to"
-    class="link"
-  >
+  <router-link :to="to" class="link">
     <slot />
   </router-link>
 </template>
@@ -10,10 +7,8 @@
 <script>
 export default {
   name: "VLink",
-  props: ["to"]
-}
+  props: ["to"],
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -13,11 +13,9 @@ import ArticleListItem from "@/components/blog/ArticleListItem";
 
 export default {
   name: "ArticleList",
-  components: {ArticleListItem},
-  props: ["articles"]
-}
+  components: { ArticleListItem },
+  props: ["articles"],
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

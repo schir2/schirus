@@ -9,19 +9,19 @@
 
 <script>
 export default {
-  name: "VCardSmall"
-}
+  name: "VCardSmall",
+};
 </script>
 
 <style scoped lang="scss">
 .card {
   box-shadow: $shadow-1;
-  margin: .5rem;
-  padding: .5rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
   max-width: 70rem;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
   transition: all 1s ease;
 
   @media (max-width: 35rem) {
@@ -38,8 +38,6 @@ export default {
   @media (max-width: 35rem) {
     flex-direction: column;
     gap: 1rem;
-
   }
 }
-
 </style>

@@ -2,10 +2,8 @@
 
 <script>
 export default {
-  name: "Components"
-}
+  name: "Components",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

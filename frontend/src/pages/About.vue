@@ -5,14 +5,12 @@
 <script>
 export default {
   name: "About",
-  data(){
+  data() {
     return {
-      articles: []
-    }
-  }
-}
+      articles: [],
+    };
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

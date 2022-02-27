@@ -1,16 +1,13 @@
 <template>
   <VCardSmall class="article-list-item">
     <template #heading>
-      <VLink :to="{name:'article-detail', params: {id: article.id}}">
+      <VLink :to="{ name: 'article-detail', params: { id: article.id } }">
         <h2 class="title">
           {{ article.title }}
         </h2>
       </VLink>
       <div class="categories">
-        <VBadge
-          v-for="category in article.categories"
-          :key="category.id"
-        >
+        <VBadge v-for="category in article.categories" :key="category.id">
           {{ category.name }}
         </VBadge>
       </div>
@@ -18,7 +15,8 @@
 
     <div class="content">
       <div class="authored">
-        by:<span class="author">{{ article.user.username }}</span> {{ createdOn }}
+        by:<span class="author">{{ article.user.username }}</span>
+        {{ article.createdOn }}
       </div>
       <span class="likes">
         <span>{{ article.likes.length }}</span>
@@ -28,18 +26,13 @@
   </VCardSmall>
 </template>
 
-<script>
-import {formatDate} from "@/helpers";
+<script setup lang="ts">
+import { defineProps } from "vue";
+import Article from "@/models/Article";
 
-export default {
-  name: "ArticleListItem",
-  props: ["article"],
-  computed: {
-    createdOn() {
-      return formatDate(this.article.createdOn)
-    }
-  }
-}
+defineProps({
+  article: { type: Article },
+});
 </script>
 
 <style scoped lang="scss">
@@ -54,17 +47,16 @@ export default {
 
 .content {
   display: flex;
-  padding: .5rem;
+  padding: 0.5rem;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 
-.likes{
+.likes {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 1ch;
 }
-
 </style>

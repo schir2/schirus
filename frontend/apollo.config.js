@@ -1,14 +1,11 @@
 module.exports = {
   client: {
     service: {
-      name: 'schirus',
+      name: "schirus",
       // URL to the GraphQL API
-      url: 'http://localhost:8000/',
+      url: "http://localhost:8000/",
     },
     // Files processed by the extension
-    includes: [
-      'src/**/*.vue',
-      'src/**/*.js',
-    ],
+    includes: ["src/**/*.vue", "src/**/*.js"],
   },
-}
+};

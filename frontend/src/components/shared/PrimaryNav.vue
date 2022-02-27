@@ -1,37 +1,20 @@
 <template>
   <nav class="top-nav">
-    <img
-      class="logo"
-      src="@/assets/logo.gif"
-    >
+    <img class="logo" src="@/assets/logo.gif" />
     <Transition>
-      <menu
-        v-show="!mobile || menuVisible"
-        class="menu"
-      >
-        <ul
-          id="links"
-          class="links"
-        >
+      <menu v-show="!mobile || menuVisible" class="menu">
+        <ul id="links" class="links">
           <li class="link">
-            <NavLink :to="{name:'home'}">
-              Home
-            </NavLink>
+            <NavLink :to="{ name: 'home' }"> Home </NavLink>
           </li>
           <li class="link">
-            <NavLink :to="{name:'blog'}">
-              Blog
-            </NavLink>
+            <NavLink :to="{ name: 'blog' }"> Blog </NavLink>
           </li>
           <li class="link">
-            <NavLink :to="{name:'apps'}">
-              Apps
-            </NavLink>
+            <NavLink :to="{ name: 'apps' }"> Apps </NavLink>
           </li>
           <li class="link">
-            <NavLink :to="{name:'about'}">
-              About
-            </NavLink>
+            <NavLink :to="{ name: 'about' }"> About </NavLink>
           </li>
         </ul>
         <AuthSmall />
@@ -47,17 +30,11 @@
         key="1"
         class="toggle"
         @click="menuVisible = !menuVisible"
-      ><span
-        class="material-icons"
-      >menu</span></a>
-      <a
-        v-else
-        key="2"
-        class="toggle"
-        @click="menuVisible = !menuVisible"
-      ><span
-        class="material-icons"
-      >close</span></a>
+        ><span class="material-icons">menu</span></a
+      >
+      <a v-else key="2" class="toggle" @click="menuVisible = !menuVisible"
+        ><span class="material-icons">close</span></a
+      >
     </Transition>
   </nav>
 </template>
@@ -68,30 +45,29 @@ import NavLink from "@/components/shared/NavLink";
 
 export default {
   name: "PrimaryNav",
-  components: {NavLink, AuthSmall},
+  components: { NavLink, AuthSmall },
   data() {
     return {
       menuVisible: false,
-      mobile: true
-    }
+      mobile: true,
+    };
   },
   mounted() {
-    this.onResize()
-    window.addEventListener('resize', this.onResize, {passive: true})
+    this.onResize();
+    window.addEventListener("resize", this.onResize, { passive: true });
   },
   unmounted() {
-    window.removeEventListener('resize', this.onResize)
+    window.removeEventListener("resize", this.onResize);
   },
   methods: {
     onResize() {
-      this.mobile = window.matchMedia('(max-width: 35rem)').matches
-    }
-  }
-}
+      this.mobile = window.matchMedia("(max-width: 35rem)").matches;
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-
 .top-nav {
   background-color: $color-light-gray;
   padding: 1rem;
@@ -122,7 +98,6 @@ export default {
   width: 2rem;
 }
 
-
 .links {
   grid-area: links;
   display: flex;
@@ -132,7 +107,6 @@ export default {
   font-weight: bold;
   font-size: 1.25rem;
   text-transform: uppercase;
-
 }
 
 @media (max-width: 35rem) {
@@ -167,7 +141,6 @@ export default {
   .links {
     flex-direction: column;
     justify-content: space-around;
-
   }
   .auth-small {
     display: flex;
@@ -175,13 +148,14 @@ export default {
     flex-direction: column;
   }
 
-  .v-enter-active, .v-leave-active {
-    transition: all .5s ease;
+  .v-enter-active,
+  .v-leave-active {
+    transition: all 0.5s ease;
   }
-  .v-enter-from, .v-leave-to {
+  .v-enter-from,
+  .v-leave-to {
     transform: translateX(100%);
     opacity: 0;
   }
-
 }
 </style>

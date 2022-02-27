@@ -1,17 +1,14 @@
 <template>
-  <div
-    @dragover.prevent
-    @drop.prevent
-  >
+  <div @dragover.prevent @drop.prevent>
     <form>
       <draggable-component
         v-model="files"
         class="files"
         item-key="id"
-        @start="drag=true"
-        @end="drag=false"
+        @start="drag = true"
+        @end="drag = false"
       >
-        <template #item="{element, index}">
+        <template #item="{ element, index }">
           <div class="file">
             <button
               class="material-icons file-action"
@@ -19,11 +16,10 @@
             >
               delete
             </button>
-            <span class="file-heading">{{ element.file.name.substring(0, element.file.name.length-4) }}</span>
-            <iframe
-              class="file-thumbnail"
-              :src="element.thumbnail"
-            />
+            <span class="file-heading">{{
+              element.file.name.substring(0, element.file.name.length - 4)
+            }}</span>
+            <iframe class="file-thumbnail" :src="element.thumbnail" />
           </div>
         </template>
       </draggable-component>
@@ -31,9 +27,9 @@
         ref="fileInput"
         type="file"
         multiple
-        style="display:none"
+        style="display: none"
         @change="onUploadHandler"
-      >
+      />
       <div
         class="drop-zone"
         @drop="onDropHandler"
@@ -42,68 +38,64 @@
         <span class="material-icons icon">file_upload</span>
         <span class="display-1">Drop Your Files Here</span>
       </div>
-      <button @click.prevent="onClickMerge">
-        Merge
-      </button>
+      <button @click.prevent="onClickMerge">Merge</button>
     </form>
   </div>
 </template>
 
 <script>
-
-import {pdfService} from "@/services/PDFService";
-import draggableComponent from "vuedraggable"
+import { pdfService } from "@/services/PDFService";
+import draggableComponent from "vuedraggable";
 
 export default {
   name: "PDFMerge",
-  components: {draggableComponent},
+  components: { draggableComponent },
   data() {
     return {
       files: [],
-      drag: false
-    }
+      drag: false,
+    };
   },
   methods: {
     async onClickMerge() {
       const objectUrl = await pdfService.generateMergedObjectUrl(
-          this.files.map(file => file.file))
-      window.open(objectUrl, '', 'height=650,width=840');
-
+        this.files.map((file) => file.file)
+      );
+      window.open(objectUrl, "", "height=650,width=840");
     },
     async addFiles(files) {
-      const success = []
-      const errors = []
+      const success = [];
+      const errors = [];
       for (const file of files) {
-
-        if (file.name.endsWith('.pdf')) {
-          this.files.push({file: file, thumbnail: await pdfService.generateThumbnailObjectUrl(file)})
-          success.push(file.name)
+        if (file.name.endsWith(".pdf")) {
+          this.files.push({
+            file: file,
+            thumbnail: await pdfService.generateThumbnailObjectUrl(file),
+          });
+          success.push(file.name);
         } else {
-          errors.push(file.name)
+          errors.push(file.name);
         }
       }
       if (success.length !== 0) {
-        this.$toast.success(`Added ${success.length} files.`)
+        this.$toast.success(`Added ${success.length} files.`);
       }
       if (errors.length !== 0) {
-        this.$toast.error(`Failed to add ${errors.length} files.`)
+        this.$toast.error(`Failed to add ${errors.length} files.`);
       }
     },
     removeFile(index) {
-      this.$toast.warning(`Removed ${this.files[index].file.name}`)
-      this.files.splice(index, 1)
-    }
-    ,
+      this.$toast.warning(`Removed ${this.files[index].file.name}`);
+      this.files.splice(index, 1);
+    },
     async onUploadHandler(event) {
-      this.addFiles(event.target.files)
-    }
-    ,
+      this.addFiles(event.target.files);
+    },
     async onDropHandler(event) {
-      this.addFiles(event.dataTransfer.files)
-    }
-    ,
-  }
-}
+      this.addFiles(event.dataTransfer.files);
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -120,7 +112,7 @@ export default {
   background-color: #fafafa;
   color: #bdbdbd;
   outline: none;
-  transition: border .24s ease-in-out;
+  transition: border 0.24s ease-in-out;
 
   .icon {
     font-size: 5rem;
@@ -140,5 +132,4 @@ export default {
   height: 30rem;
   width: 15rem;
 }
-
 </style>

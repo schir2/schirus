@@ -1,25 +1,25 @@
-import {AuthUser} from "@/models/AuthUser";
+import { AuthUser } from "@/models/AuthUser";
 import AuthStorage from "@/storage/auth/types";
-import {plainToClass} from "class-transformer"
+import { plainToClass } from "class-transformer";
 
-class LocalAuthStorage implements AuthStorage{
-    storageObjectName = 'authUser'
+class LocalAuthStorage implements AuthStorage {
+  storageObjectName = "authUser";
 
-    getAuthUser() :AuthUser {
-        const data = localStorage.getItem(this.storageObjectName)
-        if (data){
-            return plainToClass(AuthUser, JSON.parse(data))
-        }
-        return new AuthUser()
+  getAuthUser(): AuthUser {
+    const data = localStorage.getItem(this.storageObjectName);
+    if (data) {
+      return plainToClass(AuthUser, JSON.parse(data));
     }
+    return new AuthUser();
+  }
 
-    setAuthUser(AuthUser: AuthUser) {
-        localStorage.setItem(this.storageObjectName, JSON.stringify(AuthUser));
-    }
+  setAuthUser(AuthUser: AuthUser) {
+    localStorage.setItem(this.storageObjectName, JSON.stringify(AuthUser));
+  }
 
-    removeAuthUser() {
-        localStorage.removeItem(this.storageObjectName);
-    }
+  removeAuthUser() {
+    localStorage.removeItem(this.storageObjectName);
+  }
 }
 
-export default new LocalAuthStorage()
+export default new LocalAuthStorage();

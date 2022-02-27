@@ -6,10 +6,8 @@
 import ArticleForm from "@/components/blog/ArticleForm";
 export default {
   name: "ArticleAddPage",
-  components: {ArticleForm}
-}
+  components: { ArticleForm },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
