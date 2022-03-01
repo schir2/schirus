@@ -1,12 +1,12 @@
-import Article from "@/models/Article";
-import {apolloClient} from "@/main";
-import {GET_ARTICLE_BY_ID, GET_ARTICLE_LIST} from "@/services/apollo/queries";
-import {plainToClass} from "class-transformer";
-import {defineStore} from "pinia";
+import Article from "@/models/Article"
+import {apolloClient} from "@/main"
+import {GET_ARTICLE_BY_ID, GET_ARTICLE_LIST} from "@/services/apollo/queries"
+import {plainToClass} from "class-transformer"
+import {defineStore} from "pinia"
 
 interface BlogState {
-    article: Article | null;
-    articles: Article[];
+    article: Article | null
+    articles: Article[]
 }
 
 export const useBlogStore = defineStore("BlogStore", {
@@ -14,7 +14,7 @@ export const useBlogStore = defineStore("BlogStore", {
         return {
             article: new Article(),
             articles: [],
-        };
+        }
     },
     actions: {
         async getArticlesTop() {
@@ -23,9 +23,9 @@ export const useBlogStore = defineStore("BlogStore", {
                     await apolloClient.query({
                         query: GET_ARTICLE_LIST,
                     })
-                ).data.articles;
+                ).data.articles
             } catch (error) {
-                console.error(error);
+                console.error(error)
             }
         },
         async getArticle(id: string) {
@@ -38,10 +38,10 @@ export const useBlogStore = defineStore("BlogStore", {
                             variables: {id: id},
                         })
                     ).data.article
-                );
+                )
             } catch (error) {
-                console.error(error);
+                console.error(error)
             }
         },
     },
-});
+})
