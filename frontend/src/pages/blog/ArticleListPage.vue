@@ -1,19 +1,16 @@
-<script setup type="ts">
-import {computed, onMounted} from "vue"
+<script setup type="ts" async>
 import ArticleList from "@/components/blog/ArticleList.vue";
 import {useBlogStore} from "@/store/BlogStore";
 
 const blogStore = useBlogStore()
-
-onMounted(async () => {
-  await blogStore.getArticlesTop()
-})
-const articles = computed(() => blogStore.articles)
+await blogStore.getArticlesTop()
+const articles = blogStore.articles
 </script>
 <template>
   <div>
-    <VLink :to="{ name: 'article-add' }"> Add Article </VLink>
-
-    <ArticleList :articles="articles" />
+    <VLink :to="{ name: 'article-add' }"> Add Article</VLink>
+    <suspense>
+      <ArticleList :articles="articles"/>
+    </suspense>
   </div>
 </template>

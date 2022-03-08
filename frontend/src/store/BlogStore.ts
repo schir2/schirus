@@ -1,7 +1,7 @@
 import Article from "@/models/Article"
 import {apolloClient} from "@/main"
 import {GET_ARTICLE_BY_ID, GET_ARTICLE_LIST} from "@/services/apollo/queries"
-import {plainToClass} from "class-transformer"
+import {plainToInstance} from "class-transformer"
 import {defineStore} from "pinia"
 
 interface BlogState {
@@ -19,18 +19,19 @@ export const useBlogStore = defineStore("BlogStore", {
     actions: {
         async getArticlesTop() {
             try {
-                this.articles = (
-                    await apolloClient.query({
+                this.articles = plainToInstance(
+                    Article,
+                    (await apolloClient.query({
                         query: GET_ARTICLE_LIST,
                     })
-                ).data.articles
+                ).data.articles as Article[])
             } catch (error) {
                 console.error(error)
             }
         },
         async getArticle(id: string) {
             try {
-                this.article = plainToClass(
+                this.article = plainToInstance(
                     Article,
                     (
                         await apolloClient.query({
