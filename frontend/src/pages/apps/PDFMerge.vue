@@ -44,9 +44,9 @@
 </template>
 
 <script>
-import {pdfService} from "@/services/PDFService"
+import {pdfService} from "@/services/pdf"
 import draggableComponent from "vuedraggable"
-import {FileDirectory, traverseDirectories} from "@/pages/apps/types";
+import {Directory, traverseDirectories} from "@/services/pdf/types";
 
 export default {
   name: "PDFMerge",

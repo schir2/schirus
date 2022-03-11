@@ -1,6 +1,6 @@
 import { PDFDocument } from "pdf-lib";
 
-export const pdfService = {
+export const index = {
   async merge(documents: File[]) {
     const newDocument = await PDFDocument.create();
 
